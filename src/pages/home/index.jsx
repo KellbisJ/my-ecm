@@ -1,7 +1,6 @@
 import react from 'react';
-import './App.css';
 
-function App() {
+function Home() {
 	return (
 		<>
 			<div className="bg-yellow-200">Hello</div>
@@ -9,4 +8,4 @@ function App() {
 	);
 }
 
-export default App;
+export { Home };
