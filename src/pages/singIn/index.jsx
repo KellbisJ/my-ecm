@@ -1,11 +1,7 @@
-import react from 'react';
+import { Layout } from '../../components/layout';
 
 function SingIn() {
-	return (
-		<>
-			<div className="bg-yellow-200">SingIn</div>
-		</>
-	);
+	return <Layout>SingIn</Layout>;
 }
 
 export { SingIn };

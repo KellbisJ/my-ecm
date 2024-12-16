@@ -1,11 +1,7 @@
-import react from 'react';
+import { Layout } from '../../components/layout';
 
 function MyOrder() {
-	return (
-		<>
-			<div className="bg-yellow-200">MyOrder</div>
-		</>
-	);
+	return <Layout>MyOrder</Layout>;
 }
 
 export { MyOrder };

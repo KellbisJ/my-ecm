@@ -1,10 +1,12 @@
-import react from 'react';
+import { Layout } from '../../components/layout';
+import { Card } from '../../components/card';
 
 function Home() {
 	return (
-		<>
-			<div className="bg-yellow-200">Hello</div>
-		</>
+		<Layout>
+			Home
+			<Card />
+		</Layout>
 	);
 }
 
