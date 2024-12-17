@@ -1,5 +1,13 @@
+import React from 'react';
+import { Footer } from '../footer';
+
 const Layout = ({ children }) => {
-	return <div className="flex flex-col items-center mt-20">{children}</div>;
+	return (
+		<div className="flex-1 flex flex-col h-screen items-center mt-20">
+			<div className="flex-1 my-6">{children}</div>
+			<Footer />
+		</div>
+	);
 };
 
 export { Layout };
