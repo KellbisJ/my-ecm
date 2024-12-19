@@ -29,7 +29,7 @@ function Home() {
 			{loading ? (
 				<CardSkeleton />
 			) : (
-				<div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg justify-items-center">
+				<div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-full max-w-screen-lg justify-items-center mx-auto my-4 p-3.5">
 					{products?.map((product) => (
 						<Card key={product.id} product={product} />
 					))}
