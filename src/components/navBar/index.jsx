@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { CustomNavLink } from './CustomNavLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from '../context/CartContext';
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
+	const { count } = useContext(CartContext);
 
 	const toggleMenu = () => {
 		setOpen(!open);
@@ -48,7 +50,8 @@ const NavBar = () => {
 							<CustomNavLink to={'/account'}>Account</CustomNavLink>
 						</li>
 						<li>
-							<FontAwesomeIcon icon={faShoppingCart} />0
+							<FontAwesomeIcon icon={faShoppingCart} />
+							{count}
 						</li>
 					</ul>
 				</div>
@@ -89,7 +92,8 @@ const NavBar = () => {
 					<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
 				</li>
 				<li>
-					<FontAwesomeIcon icon={faShoppingCart} />0
+					<FontAwesomeIcon icon={faShoppingCart} />
+					{count}
 				</li>
 			</ul>
 		</nav>

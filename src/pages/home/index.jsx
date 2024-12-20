@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Layout } from '../../components/layout';
 import { Card } from '../../components/card';
 import { getProducts } from '../../api/getProducts.js';
 import { CardSkeleton } from '../../components/Skeletons/index.jsx';
+import { ProductDetail } from '../../components/productDetail/index.jsx';
+import { ProductDetailContext } from '../../components/context/ProductDetailContext.jsx';
 
 function Home() {
 	const [loading, setLoading] = useState(true);
 	const [products, setProducts] = useState(null);
+	const { showProductDetail } = useContext(ProductDetailContext);
 
 	useEffect(() => {
 		setLoading(true);
@@ -19,6 +22,7 @@ function Home() {
 				setProducts(data);
 			}
 			setLoading(false);
+			// console.log(data);
 		};
 
 		fetchData();
@@ -35,6 +39,7 @@ function Home() {
 					))}
 				</div>
 			)}
+			{showProductDetail && <ProductDetail />}
 		</Layout>
 	);
 }

@@ -1,13 +1,30 @@
 import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
+import { ProductDetailContext } from '../context/ProductDetailContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Card = ({ product }) => {
+	const { addToCart } = useContext(CartContext);
+	const { toggleProductDetail } = useContext(ProductDetailContext);
+
+	const handleAddToCartClick = (e) => {
+		e.stopPropagation();
+		addToCart(product);
+	};
+
 	return (
-		<div className="bg-white cursor-pointer w-full max-w-xs h-auto rounded-lg shadow-lg transition-transform transform hover:scale-105">
+		<div
+			className="bg-white cursor-pointer w-full max-w-xs h-auto rounded-lg shadow-lg transition-transform transform hover:scale-105"
+			onClick={toggleProductDetail}>
 			<figure className="relative mb-2 w-full h-4/6  overflow-hidden rounded-t-lg">
 				<img src={`${product.image}`} alt="product" className="w-full h-full object-cover object-center" />
 				<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">{`${product.category}`}</figcaption>
-				<button className="absolute top-2 right-2 flex justify-center items-center bg-white w-8 h-8 rounded-full shadow-md">
-					<span className="text-lg text-green-500 text-center">+</span>
+				<button
+					className="absolute top-2 right-2 flex justify-center items-center bg-white w-8 h-8 rounded-full shadow-md"
+					onClick={handleAddToCartClick}>
+					<FontAwesomeIcon icon={faPlus} className="text-green-500 text-center" />
 				</button>
 			</figure>
 			<div className="px-2">
