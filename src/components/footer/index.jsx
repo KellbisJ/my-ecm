@@ -29,7 +29,7 @@ const Footer = () => {
 					<img src="https://wkncdn.com/newx/assets/build/img/logos/mobile_logo.16f3a81b5.svg" alt="Workana" className="w-5 h-5 mx-2 " />
 				</a>
 			</div>
-			<p className="md:mt-0 mt-4">Kellbis Salazar</p>
+			<p>Kellbis Salazar</p>
 		</footer>
 	);
 };

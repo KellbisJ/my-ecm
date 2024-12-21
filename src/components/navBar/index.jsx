@@ -11,23 +11,18 @@ const NavBar = () => {
 	const toggleMenu = () => {
 		setOpen(!open);
 	};
+
 	return (
 		<nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-teal-300">
-			<li className="font-semibold text-lg md:hidden list-none">
+			<li className="font-semibold text-lg lg:hidden list-none">
 				<CustomNavLink to={'/'}>Shopi</CustomNavLink>
 			</li>
-			<div className="md:hidden">
-				<FontAwesomeIcon icon={faBars} onClick={toggleMenu} />
+			<div className="lg:hidden cursor-pointer">
+				<FontAwesomeIcon icon={!open ? faBars : faTimes} onClick={toggleMenu} />
 			</div>
 			{open && (
-				<div className="fixed top-0 left-0 w-full h-screen bg-stone-100 z-20 py-5 px-8">
-					<div className="flex justify-between items-center">
-						<div className="font-semibold text-lg ">
-							<CustomNavLink to={'/'}>Shopi</CustomNavLink>
-						</div>
-						<FontAwesomeIcon icon={faTimes} onClick={toggleMenu} />
-					</div>
-					<ul className="mt-4">
+				<div className="fixed top-16 left-0 w-full h-screen bg-stone-100 z-20 py-5 px-8 flex justify-between text-base font-semibold lg:hidden">
+					<ul className="mt-4 flex flex-col gap-3 text-wrap">
 						<li>
 							<CustomNavLink to={'/all'}>All</CustomNavLink>
 						</li>
@@ -46,10 +41,18 @@ const NavBar = () => {
 						<li>
 							<CustomNavLink to={'/others'}>Others</CustomNavLink>
 						</li>
+					</ul>
+					<ul className="mt-4 flex flex-col gap-3 text-wrap">
 						<li>
-							<CustomNavLink to={'/account'}>Account</CustomNavLink>
+							<CustomNavLink to={'/my-orders'}>My Orders</CustomNavLink>
 						</li>
 						<li>
+							<CustomNavLink to={'/my-account'}>My Account</CustomNavLink>
+						</li>
+						<li>
+							<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
+						</li>
+						<li className="flex justify-between items-center">
 							<FontAwesomeIcon icon={faShoppingCart} />
 							{count}
 						</li>
@@ -57,7 +60,7 @@ const NavBar = () => {
 				</div>
 			)}
 
-			<ul className="hidden md:flex items-center gap-3 sm:hidden">
+			<ul className="hidden lg:flex items-center gap-3 sm:hidden">
 				<li className="font-semibold text-lg">
 					<CustomNavLink to={'/'}>Shopi</CustomNavLink>
 				</li>
@@ -80,7 +83,7 @@ const NavBar = () => {
 					<CustomNavLink to={'/others'}>Others</CustomNavLink>
 				</li>
 			</ul>
-			<ul className="hidden md:flex items-center gap-3">
+			<ul className="hidden lg:flex items-center gap-3">
 				<li className="text-black/60">example@lala.com</li>
 				<li>
 					<CustomNavLink to={'/my-orders'}>My Orders</CustomNavLink>

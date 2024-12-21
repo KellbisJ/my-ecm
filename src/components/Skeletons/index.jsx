@@ -27,4 +27,20 @@ const CardSkeleton = () => {
 	);
 };
 
-export { CardSkeleton };
+const CardDetailSkeleton = () => {
+	return (
+		<div className="flex flex-col p-4 overflow-auto animate-pulse">
+			<p className="text-sm font-medium text-wrap mb-4 h-4 bg-gray-300 rounded"></p>
+			<figure className="relative mb-2 w-full h-56 sm:h-96 rounded-lg overflow-visible">
+				<div className="h-full w-full bg-gray-300 rounded-lg animate-pulse"></div>
+				<figcaption className="absolute bottom-2 left-2 bg-gray-300 bg-opacity-75 text-white text-xs px-2 py-1 rounded"></figcaption>
+			</figure>
+			<span className="h-4 bg-gray-300 rounded animate-pulse flex items-center">
+				<div className="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+			</span>
+			<p className="mt-2 h-8 bg-gray-300 rounded animate-pulse"></p>
+		</div>
+	);
+};
+
+export { CardSkeleton, CardDetailSkeleton };

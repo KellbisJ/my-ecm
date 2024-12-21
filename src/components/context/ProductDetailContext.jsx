@@ -4,12 +4,21 @@ const ProductDetailContext = createContext();
 
 const ProductDetailProvider = ({ children }) => {
 	const [showProductDetail, setShowProductDetail] = useState(false);
+	const [productData, setProductData] = useState({});
 
 	const toggleProductDetail = () => {
 		setShowProductDetail(!showProductDetail);
 	};
 
-	return <ProductDetailContext.Provider value={{ showProductDetail, toggleProductDetail }}>{children}</ProductDetailContext.Provider>;
+	const productDetailData = (data) => {
+		setProductData(data);
+	};
+
+	return (
+		<ProductDetailContext.Provider value={{ showProductDetail, setShowProductDetail, toggleProductDetail, productData, productDetailData }}>
+			{children}
+		</ProductDetailContext.Provider>
+	);
 };
 
 export { ProductDetailContext, ProductDetailProvider };
