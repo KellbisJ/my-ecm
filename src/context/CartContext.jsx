@@ -5,6 +5,7 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
 	const [cart, setCart] = useState([]);
 	const [count, setCount] = useState(0);
+	const [showProductOrder, setShowProductOrder] = useState(false);
 
 	const maximumPerProduct = 3;
 
@@ -24,10 +25,18 @@ const CartProvider = ({ children }) => {
 			// console.log(existingProduct);
 		}
 	};
+	const ProductOrderExist = () => {
+		cart.length === 0 ? null : setShowProductOrder(true);
+	};
 	// console.log(count);
-	// console.log(cart);
+	console.log(cart);
+	// console.log(showProductOrder);
 
-	return <CartContext.Provider value={{ cart, count, addToCart }}>{children}</CartContext.Provider>;
+	return (
+		<CartContext.Provider value={{ cart, count, addToCart, showProductOrder, setShowProductOrder, ProductOrderExist }}>
+			{children}
+		</CartContext.Provider>
+	);
 };
 
 export { CartProvider, CartContext };

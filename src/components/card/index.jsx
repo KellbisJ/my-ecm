@@ -1,26 +1,35 @@
 import React from 'react';
 import { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import { ProductDetailContext } from '../context/ProductDetailContext';
+import { CartContext } from '../../context/CartContext';
+import { ProductDetailContext } from '../../context/ProductDetailContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 const Card = ({ product }) => {
-	const { addToCart } = useContext(CartContext);
+	const { setShowProductOrder, addToCart } = useContext(CartContext);
 	const { setShowProductDetail, productDetailData } = useContext(ProductDetailContext);
 
+	const handleShowProductDetail = () => {
+		if (product) {
+			setShowProductOrder(false);
+			setShowProductDetail(true);
+			productDetailData(product);
+		}
+	};
+
 	const handleAddToCartClick = (e) => {
-		e.stopPropagation();
-		addToCart(product);
+		if (product) {
+			e.stopPropagation();
+			addToCart(product);
+			setShowProductDetail(false);
+			setShowProductOrder(true);
+		}
 	};
 
 	return (
 		<div
 			className="bg-white cursor-pointer w-full max-w-xs h-auto rounded-lg shadow-lg transition-transform transform hover:scale-105"
-			onClick={() => {
-				setShowProductDetail(true);
-				productDetailData(product);
-			}}>
+			onClick={handleShowProductDetail}>
 			<figure className="relative mb-2 w-full h-4/6  overflow-hidden rounded-t-lg">
 				<img src={`${product.image}`} alt="product" className="w-full h-full object-cover object-center" />
 				<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">{`${product.category}`}</figcaption>

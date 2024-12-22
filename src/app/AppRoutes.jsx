@@ -1,11 +1,11 @@
 import react from 'react';
 import { useRoutes } from 'react-router-dom';
-import { Home } from '../home';
-import { MyAccount } from '../myAccount';
-import { MyOrder } from '../myOrder';
-import { MyOrders } from '../myOrders';
-import { NotFound } from '../notFound';
-import { SingIn } from '../singIn';
+import { Home } from '../pages/home';
+import { MyAccount } from '../pages/myAccount';
+import { MyOrder } from '../pages/myOrder';
+import { MyOrders } from '../pages/myOrders';
+import { NotFound } from '../pages/notFound';
+import { SingIn } from '../pages/singIn';
 
 const AppRoutes = () => {
 	const routes = useRoutes([

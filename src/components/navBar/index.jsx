@@ -2,13 +2,16 @@ import React, { useState, useContext } from 'react';
 import { CustomNavLink } from './CustomNavLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../../context/CartContext';
+import { ProductDetailContext } from '../../context/ProductDetailContext';
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { count } = useContext(CartContext);
+	const { setShowProductDetail } = useContext(ProductDetailContext);
 
 	const toggleMenu = () => {
+		setShowProductDetail(false);
 		setOpen(!open);
 	};
 
