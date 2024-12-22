@@ -8,6 +8,7 @@ const ProductDetailProvider = ({ children }) => {
 
 	const productDetailData = (data) => {
 		setProductData(data);
+		setShowProductDetail(true);
 	};
 
 	return (

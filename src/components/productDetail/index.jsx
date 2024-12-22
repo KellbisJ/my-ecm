@@ -29,15 +29,16 @@ const ProductDetail = () => {
 				<CardDetailSkeleton />
 			) : (
 				<div className="flex flex-col p-4 overflow-y-auto">
-					<p className="text-sm font-medium text-wrap mb-4">{`${productData.title}`}</p>
-					<figure className="relative mb-2 w-full h-4/6 rounded-lg overflow-visible">
-						<img src={`${productData.image}`} alt="product" className="w-full h-full object-cover object-center" />
+					<p className="text-sm md:text-base 2xl:text-lg font-medium text-wrap mb-4">{`${productData.title}`}</p>
+					<figure className="relative mb-2 w-full h-4/6 rounded-lg overflow-visible bg-white shadow-md">
+						<img src={`${productData.image}`} alt="product" className="w-full h-full object-contain object-center rounded-lg" />
 						<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">{`${productData.category}`}</figcaption>
 					</figure>
-					<span>
-						<FontAwesomeIcon className="text-green-500" icon={faDollarSign} /> {productData.price}
+					<span className="flex items-center text-sm font-medium my-2">
+						<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
+						<p className="pl-1">{productData.price}</p>
 					</span>
-					<p className="mt-2 text-wrap">{productData.description}</p>
+					<p className="text-wrap text-sm md:text-base 2xl:text-lg">{productData.description}</p>
 				</div>
 			)}
 		</aside>

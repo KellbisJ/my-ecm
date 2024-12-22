@@ -16,7 +16,7 @@ const NavBar = () => {
 	};
 
 	return (
-		<nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-teal-300">
+		<nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-slate-800  text-gray-200">
 			<li className="font-semibold text-lg lg:hidden list-none">
 				<CustomNavLink to={'/'}>Shopi</CustomNavLink>
 			</li>
@@ -24,7 +24,7 @@ const NavBar = () => {
 				<FontAwesomeIcon icon={!open ? faBars : faTimes} onClick={toggleMenu} />
 			</div>
 			{open && (
-				<div className="fixed top-16 left-0 w-full h-screen bg-stone-100 z-20 py-5 px-8 flex justify-between text-base font-semibold lg:hidden">
+				<div className="fixed top-16 left-0 w-full h-screen bg-gray-200 z-20 py-5 px-8 flex justify-between text-base font-semibold lg:hidden text-black">
 					<ul className="mt-4 flex flex-col gap-3 text-wrap">
 						<li>
 							<CustomNavLink to={'/all'}>All</CustomNavLink>
@@ -87,7 +87,7 @@ const NavBar = () => {
 				</li>
 			</ul>
 			<ul className="hidden lg:flex items-center gap-3">
-				<li className="text-black/60">example@lala.com</li>
+				<li className="text-gray-200">example@lala.com</li>
 				<li>
 					<CustomNavLink to={'/my-orders'}>My Orders</CustomNavLink>
 				</li>

@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
-import { ProductDetailContext } from '../../context/ProductDetailContext';
-
+import { OrderCard } from '../orderCard/orderCard';
 import { CardDetailSkeleton } from '../Skeletons';
 
 const ProductOrderCheckoutMenu = () => {
-	const { setShowProductOrder } = useContext(CartContext);
-	const { productData } = useContext(ProductDetailContext);
+	const { cart, setShowProductOrder } = useContext(CartContext);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -19,7 +17,9 @@ const ProductOrderCheckoutMenu = () => {
 		// 	}
 		// }, 200);
 		// return () => clearTimeout(timeoutId);
-	}, [productData]);
+	}, [cart]);
+
+	console.log(cart);
 
 	// console.log('Product detail:', productData);
 	return (
@@ -32,15 +32,9 @@ const ProductOrderCheckoutMenu = () => {
 				<CardDetailSkeleton />
 			) : (
 				<div className="flex flex-col p-4 overflow-y-auto">
-					{/* <p className="text-sm font-medium text-wrap mb-4">{`${productData.title}`}</p>
-					<figure className="relative mb-2 w-full h-4/6 rounded-lg overflow-visible">
-						<img src={`${productData.image}`} alt="product" className="w-full h-full object-cover object-center" />
-						<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">{`${productData.category}`}</figcaption>
-					</figure>
-					<span>
-						<FontAwesomeIcon className="text-green-500" icon={faDollarSign} /> {productData.price}
-					</span>
-					<p className="mt-2 text-wrap">{productData.description}</p> */}
+					{cart.map((product) => (
+						<OrderCard key={product.id} title={product.title} imageUrl={product.image} price={product.price} />
+					))}
 				</div>
 			)}
 		</aside>

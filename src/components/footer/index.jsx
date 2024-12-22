@@ -4,10 +4,10 @@ import { faInstagram, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-
 
 const Footer = () => {
 	return (
-		<footer className="bg-teal-300 text-black p-4 flex flex-col items-center justify-between w-full h-auto">
+		<footer className="bg-slate-800 text-gray-200 p-4 flex flex-col items-center justify-between w-full h-auto">
 			<p>
 				This website was created using{' '}
-				<a href="https://fakestoreapi.com" target="_blank" rel="noopener noreferrer" className="text-gray-950 hover:text-slate-200">
+				<a href="https://fakestoreapi.com" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-violet-600">
 					Fake Store API
 				</a>
 			</p>

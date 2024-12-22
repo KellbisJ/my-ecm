@@ -18,6 +18,7 @@ const CartProvider = ({ children }) => {
 			if (existingProduct.length < maximumPerProduct) {
 				setCart([...cart, product]);
 				setCount(cart.length + 1);
+				setShowProductOrder(true);
 			} else {
 				// console.log('You can only add 3 items of the same product');
 				return null;
@@ -25,18 +26,14 @@ const CartProvider = ({ children }) => {
 			// console.log(existingProduct);
 		}
 	};
-	const ProductOrderExist = () => {
-		cart.length === 0 ? null : setShowProductOrder(true);
-	};
+	// const ProductOrderExist = () => {
+	// 	cart.length === 0 ? null : setShowProductOrder(true);
+	// };
 	// console.log(count);
-	console.log(cart);
+	// console.log(cart);
 	// console.log(showProductOrder);
 
-	return (
-		<CartContext.Provider value={{ cart, count, addToCart, showProductOrder, setShowProductOrder, ProductOrderExist }}>
-			{children}
-		</CartContext.Provider>
-	);
+	return <CartContext.Provider value={{ cart, count, addToCart, showProductOrder, setShowProductOrder }}>{children}</CartContext.Provider>;
 };
 
 export { CartProvider, CartContext };
