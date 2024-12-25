@@ -7,12 +7,18 @@ import { ProductDetailContext } from '../../context/ProductDetailContext';
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
-	const { count } = useContext(CartContext);
+	const { count, showProductOrder, setShowProductOrder } = useContext(CartContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
 
 	const toggleMenu = () => {
 		setShowProductDetail(false);
+		setShowProductOrder(false);
 		setOpen(!open);
+	};
+	const toggleOrderCheckoutMenu = () => {
+		setShowProductDetail(false);
+		setOpen(false);
+		setShowProductOrder(!showProductOrder);
 	};
 
 	return (
@@ -55,7 +61,7 @@ const NavBar = () => {
 						<li>
 							<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
 						</li>
-						<li className="flex justify-between items-center">
+						<li className="flex justify-between items-center" onClick={toggleOrderCheckoutMenu}>
 							<FontAwesomeIcon icon={faShoppingCart} />
 							{count}
 						</li>
@@ -97,7 +103,7 @@ const NavBar = () => {
 				<li>
 					<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
 				</li>
-				<li>
+				<li className="cursor-pointer" onClick={toggleOrderCheckoutMenu}>
 					<FontAwesomeIcon icon={faShoppingCart} />
 					{count}
 				</li>

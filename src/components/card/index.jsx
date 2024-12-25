@@ -1,13 +1,16 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { ProductDetailContext } from '../../context/ProductDetailContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { useProductOrder } from '../../hooks/useProductOrder';
 
 const Card = ({ product }) => {
-	const { setShowProductOrder, addToCart } = useContext(CartContext);
+	const { setShowProductOrder, addToCart, findProductInCart } = useContext(CartContext);
 	const { setShowProductDetail, productDetailData } = useContext(ProductDetailContext);
+
+	const { newProductOrder } = useProductOrder(product);
 
 	const handleShowProductDetail = () => {
 		if (product) {
@@ -20,9 +23,11 @@ const Card = ({ product }) => {
 		if (product) {
 			e.stopPropagation();
 			setShowProductDetail(false);
-			addToCart(product);
+			addToCart(product, newProductOrder);
 		}
 	};
+
+	const productWasAdded = findProductInCart(product).length > 0;
 
 	return (
 		<div
@@ -34,7 +39,7 @@ const Card = ({ product }) => {
 				<button
 					className="absolute top-2 right-2 flex justify-center items-center bg-white w-8 h-8 rounded-full shadow-md"
 					onClick={handleAddToCartClick}>
-					<FontAwesomeIcon icon={faPlus} className="text-violet-600 text-center" />
+					<FontAwesomeIcon icon={productWasAdded ? faCheckCircle : faPlus} className="text-violet-600 text-center" />
 				</button>
 			</figure>
 			<div className="flex-1 flex flex-col justify-center p-6 w-full bg-gray-200">

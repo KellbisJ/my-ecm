@@ -31,16 +31,49 @@ const CardDetailSkeleton = () => {
 	return (
 		<div className="flex flex-col p-4 overflow-auto animate-pulse">
 			<p className="text-sm font-medium text-wrap mb-4 h-4 bg-gray-300 rounded"></p>
-			<figure className="relative mb-2 w-full h-56 sm:h-96 rounded-lg overflow-visible">
+			<figure className="relative mb-2 w-full h-56 rounded-lg overflow-visible">
 				<div className="h-full w-full bg-gray-300 rounded-lg animate-pulse"></div>
-				<figcaption className="absolute bottom-2 left-2 bg-gray-300 bg-opacity-75 text-white text-xs px-2 py-1 rounded"></figcaption>
+				<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded h-5"></figcaption>
 			</figure>
-			<span className="h-4 bg-gray-300 rounded animate-pulse flex items-center">
-				<div className="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+			<span className="h-4 w-4 bg-gray-300 rounded-full flex items-center">
+				<span className="mr-1">
+					<div className="w-4 h-4 bg-gray-300 rounded-full overflow-hidden animate-pulse"></div>
+				</span>
+				<span>
+					<div className="w-8 h-4 bg-gray-300 rounded animate-pulse"></div>
+				</span>
 			</span>
 			<p className="mt-2 h-8 bg-gray-300 rounded animate-pulse"></p>
 		</div>
 	);
 };
 
-export { CardSkeleton, CardDetailSkeleton };
+const CardOrderDetailSkeleton = () => {
+	return (
+		<div className="bg-white rounded-lg shadow-md mb-4 p-4 max-w-sm relative">
+			<div className="absolute top-0 left-0 text-gray-500 hover:text-gray-900 transition duration-300 p-2">
+				<div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
+			</div>
+			<div className="flex justify-center mb-4">
+				<div className="w-24 h-24 bg-gray-200 rounded-lg animate-pulse"></div>
+			</div>
+			<div className="text-center">
+				<h2 className="text-sm md:text-base 2xl:text-lg font-medium mb-4 animate-pulse bg-gray-200 w-6 mx-auto h-4 rounded"></h2>
+				<div className="flex items-center justify-center mb-2">
+					<div className="text-gray-500 hover:text-gray-900 transition duration-300">
+						<div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
+					</div>
+					<div className="text-gray-500 hover:text-gray-900 transition duration-300">
+						<div className="w-4 h-4 bg-gray-200 rounded mx-2 animate-pulse"></div>
+					</div>
+				</div>
+				<span className="flex items-center justify-center text-sm font-medium mt-4">
+					<div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
+					<p className="pl-1 ml-1 animate-pulse bg-gray-200 w-8 h-4 rounded"></p>
+				</span>
+			</div>
+		</div>
+	);
+};
+
+export { CardSkeleton, CardDetailSkeleton, CardOrderDetailSkeleton };
