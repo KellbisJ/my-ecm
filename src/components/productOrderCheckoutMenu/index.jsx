@@ -1,12 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
 import { OrderCard } from '../orderCard/orderCard';
+import { useProductOrder } from '../../hooks/useProductOrder';
 
 const ProductOrderCheckoutMenu = () => {
-	const { cart, setShowProductOrder, totalInMyOrder } = useContext(CartContext);
+	const { cart, setShowProductOrder, totalPriceInMyOrder } = useContext(CartContext);
 	const [loading, setLoading] = useState(true);
+
+	const { orderCheckout } = useProductOrder();
+
+	const handleCheckoutOrder = () => {
+		orderCheckout();
+	};
 
 	useEffect(() => {
 		setLoading(true);
@@ -16,7 +23,7 @@ const ProductOrderCheckoutMenu = () => {
 		return () => clearTimeout(timeoutId);
 	}, [cart]);
 
-	const total = totalInMyOrder(cart);
+	const total = totalPriceInMyOrder(cart);
 
 	// console.log(total);
 
@@ -32,8 +39,8 @@ const ProductOrderCheckoutMenu = () => {
 				</div>
 			) : (
 				<div className="flex flex-col p-4 overflow-y-auto">
-					{cart.map((product) => (
-						<OrderCard key={product.id} product={product} loading={loading} />
+					{cart.map((order) => (
+						<OrderCard key={order.id} order={order} loading={loading} />
 					))}
 					{loading ? (
 						<>
@@ -55,7 +62,11 @@ const ProductOrderCheckoutMenu = () => {
 									<p className="text-lg font-medium ml-1">{total}</p>
 								</span>
 							</div>
-							<button className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300">Checkout</button>
+							<button
+								className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300"
+								onClick={handleCheckoutOrder}>
+								Checkout
+							</button>
 						</>
 					)}
 				</div>

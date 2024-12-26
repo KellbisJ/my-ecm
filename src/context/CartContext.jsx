@@ -8,21 +8,25 @@ const CartProvider = ({ children }) => {
 	const [showProductOrder, setShowProductOrder] = useState(false);
 	const [order, setOrder] = useState([]);
 
-	const productInCart = 1;
+	const orderInCart = 1;
 	const productOrderLimit = 3;
 
-	const findProductInCart = (product) => cart.filter((item) => item.id === product.id);
+	const isOrderInCart = (product) => cart.filter((item) => item.id === product.id);
 
-	const totalInMyOrder = (eachProductOrder) => {
+	const totalPriceInMyOrder = (eachProductOrder) => {
 		return eachProductOrder.reduce((total, order) => total + order.total, 0).toFixed(2);
 	};
 
-	const addToCart = (product) => {
-		if (product) {
-			const existingProduct = findProductInCart(product);
+	const totalAllproductsInMyOrder = (eachProductOrder) => {
+		return eachProductOrder.reduce((quantity, order) => quantity + order.quantity, 0);
+	};
 
-			if (existingProduct.length < productInCart) {
-				setCart([...cart, product]);
+	const addOrderToCart = (order) => {
+		if (order) {
+			const existingOrder = isOrderInCart(order);
+
+			if (existingOrder.length < orderInCart) {
+				setCart([...cart, order]);
 				setCount(cart.length + 1);
 				setShowProductOrder(true);
 			} else {
@@ -31,15 +35,15 @@ const CartProvider = ({ children }) => {
 		}
 	};
 
-	const removeFromCart = (productId) => {
-		setCart(cart.filter((item) => item.id !== productId));
+	const removeOrderFromCart = (orderId) => {
+		setCart(cart.filter((item) => item.id !== orderId));
 		setCount(cart.length - 1);
 	};
 
-	const updateProductOrder = (productId, increment) => {
+	const updateOrderFromCart = (orderId, increment) => {
 		setCart((prevOrder) => {
 			return prevOrder.map((order) => {
-				if (order.id === productId) {
+				if (order.id === orderId) {
 					const newQuantity = increment ? order.quantity + 1 : order.quantity - 1;
 					const newTotal = newQuantity * order.price;
 					if (newQuantity >= 1 && newQuantity <= productOrderLimit) {
@@ -56,6 +60,7 @@ const CartProvider = ({ children }) => {
 	};
 
 	console.log(cart);
+	console.log(order);
 
 	return (
 		<CartContext.Provider
@@ -63,13 +68,15 @@ const CartProvider = ({ children }) => {
 				cart,
 				setCart,
 				count,
-				findProductInCart,
-				addToCart,
+				setCount,
+				isOrderInCart,
+				addOrderToCart,
 				showProductOrder,
 				setShowProductOrder,
-				removeFromCart,
-				updateProductOrder,
-				totalInMyOrder,
+				removeOrderFromCart,
+				updateOrderFromCart,
+				totalPriceInMyOrder,
+				totalAllproductsInMyOrder,
 				order,
 				setOrder,
 			}}>

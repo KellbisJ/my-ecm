@@ -7,7 +7,7 @@ import { faPlus, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg
 import { useProductOrder } from '../../hooks/useProductOrder';
 
 const Card = ({ product }) => {
-	const { setShowProductOrder, addToCart, findProductInCart } = useContext(CartContext);
+	const { setShowProductOrder, isOrderInCart } = useContext(CartContext);
 	const { setShowProductDetail, productDetailData } = useContext(ProductDetailContext);
 
 	const { createProductOrder } = useProductOrder();
@@ -23,12 +23,11 @@ const Card = ({ product }) => {
 		if (product) {
 			e.stopPropagation();
 			setShowProductDetail(false);
-			const productOrder = createProductOrder(product);
-			addToCart(productOrder);
+			createProductOrder(product);
 		}
 	};
 
-	const productWasAdded = findProductInCart(product).length > 0;
+	const productWasAdded = isOrderInCart(product).length > 0;
 
 	return (
 		<div
