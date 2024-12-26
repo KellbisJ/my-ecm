@@ -3,20 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faTimes, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { CardOrderDetailSkeleton } from '../Skeletons';
 import { CartContext } from '../../context/CartContext';
-import { useProductOrder } from '../../hooks/useProductOrder';
 
 const OrderCard = ({ product, loading }) => {
-	const { removeFromCart, productOrder } = useContext(CartContext);
-	const { updateProductOrder } = useProductOrder(product.id);
+	const { cart, updateProductOrder, removeFromCart } = useContext(CartContext);
 
-	const handleRemoveFromCart = () => {
-		removeFromCart(product.id);
-	};
 	const handleUpdateProductOrder = (increment) => {
 		updateProductOrder(product.id, increment);
 	};
 
-	const findInProductOrder = productOrder.find((order) => order.productId === product.id);
+	const handleRemoveFromCart = () => {
+		removeFromCart(product.id);
+	};
+
+	const findInProductOrder = cart.find((order) => order.id === product.id);
 
 	return (
 		<>
@@ -42,7 +41,7 @@ const OrderCard = ({ product, loading }) => {
 						</div>
 						<span className="flex items-center justify-center text-sm font-medium">
 							<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
-							<p className="pl-1">{findInProductOrder?.total}</p>
+							<p className="pl-1">{findInProductOrder?.total.toFixed(2)}</p>
 						</span>
 					</div>
 				</div>

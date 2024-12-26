@@ -5,7 +5,7 @@ import { CartContext } from '../../context/CartContext';
 import { OrderCard } from '../orderCard/orderCard';
 
 const ProductOrderCheckoutMenu = () => {
-	const { cart, setShowProductOrder, totalInMyOrder, productOrder } = useContext(CartContext);
+	const { cart, setShowProductOrder, totalInMyOrder } = useContext(CartContext);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -16,14 +16,14 @@ const ProductOrderCheckoutMenu = () => {
 		return () => clearTimeout(timeoutId);
 	}, [cart]);
 
-	const total = totalInMyOrder(productOrder);
+	const total = totalInMyOrder(cart);
 
-	console.log(total);
+	// console.log(total);
 
 	return (
 		<aside className="w-48 md:w-60 lg:w-[360px] h-[calc(100vh-69px)] flex flex-col fixed bg-stone-100 top-16 right-0 mt-1 border border-black rounded-lg ">
 			<div className="flex p-4 justify-between items-center">
-				<h2 className="font-medium text-xl">My order</h2>
+				<h2 className="font-medium text-xl">My cart</h2>
 				<FontAwesomeIcon className="cursor-pointer" icon={faTimes} onClick={() => setShowProductOrder(false)} />
 			</div>
 			{cart.length === 0 ? (

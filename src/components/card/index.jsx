@@ -10,7 +10,7 @@ const Card = ({ product }) => {
 	const { setShowProductOrder, addToCart, findProductInCart } = useContext(CartContext);
 	const { setShowProductDetail, productDetailData } = useContext(ProductDetailContext);
 
-	const { newProductOrder } = useProductOrder(product);
+	const { createProductOrder } = useProductOrder();
 
 	const handleShowProductDetail = () => {
 		if (product) {
@@ -23,7 +23,8 @@ const Card = ({ product }) => {
 		if (product) {
 			e.stopPropagation();
 			setShowProductDetail(false);
-			addToCart(product, newProductOrder);
+			const productOrder = createProductOrder(product);
+			addToCart(productOrder);
 		}
 	};
 

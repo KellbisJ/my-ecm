@@ -64,12 +64,12 @@ const CardOrderDetailSkeleton = () => {
 						<div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
 					</div>
 					<div className="text-gray-500 hover:text-gray-900 transition duration-300">
-						<div className="w-4 h-4 bg-gray-200 rounded mx-2 animate-pulse"></div>
+						<div className="w-4 h-4 bg-gray-200 rounded ml-2 animate-pulse"></div>
 					</div>
 				</div>
 				<span className="flex items-center justify-center text-sm font-medium mt-4">
 					<div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-					<p className="pl-1 ml-1 animate-pulse bg-gray-200 w-8 h-4 rounded"></p>
+					<p className="pl-1 ml-2 animate-pulse bg-gray-200 w-8 h-4 rounded"></p>
 				</span>
 			</div>
 		</div>
