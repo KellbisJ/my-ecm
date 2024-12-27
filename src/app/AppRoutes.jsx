@@ -1,6 +1,7 @@
 import react from 'react';
 import { useRoutes } from 'react-router-dom';
 import { Home } from '../pages/home';
+import { Checkout } from '../pages/checkout';
 import { MyAccount } from '../pages/myAccount';
 import { MyOrder } from '../pages/myOrder';
 import { MyOrders } from '../pages/myOrders';
@@ -12,6 +13,10 @@ const AppRoutes = () => {
 		{
 			path: '/',
 			element: <Home />,
+		},
+		{
+			path: '/checkout',
+			element: <Checkout />,
 		},
 		{
 			path: '/my-account',

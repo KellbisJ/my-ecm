@@ -76,4 +76,23 @@ const CardOrderDetailSkeleton = () => {
 	);
 };
 
-export { CardSkeleton, CardDetailSkeleton, CardOrderDetailSkeleton };
+const CardCheckoutCartSkeleton = () => {
+	return (
+		<div className="flex justify-start items-center gap-4 bg-white rounded-lg shadow-md p-4 mb-4 relative animate-pulse w-64 sm:w-96 md:w-[580px] lg:w-[680px]">
+			<div className="w-40 h-36 bg-gray-300 rounded-lg"></div>
+			<div className="flex-1 w-40">
+				<h2 className="h-6 bg-gray-300 rounded-lg mb-2" style={{ width: '70%' }}></h2>
+				<div className="flex items-center justify-between mt-4">
+					<div className="flex items-center">
+						<div className="bg-gray-300 rounded-full w-8 h-8"></div>
+						<span className="mx-2 h-6 w-6 bg-gray-300 rounded-lg"></span>
+						<div className="bg-gray-300 rounded-full w-8 h-8"></div>
+					</div>
+				</div>
+			</div>
+			<div className="absolute top-2 right-2 bg-gray-300 rounded-full w-8 h-8"></div>
+		</div>
+	);
+};
+
+export { CardSkeleton, CardDetailSkeleton, CardOrderDetailSkeleton, CardCheckoutCartSkeleton };

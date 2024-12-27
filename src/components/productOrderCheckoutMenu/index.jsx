@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
@@ -62,11 +63,13 @@ const ProductOrderCheckoutMenu = () => {
 									<p className="text-lg font-medium ml-1">{total}</p>
 								</span>
 							</div>
-							<button
-								className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300"
-								onClick={handleCheckoutOrder}>
-								Checkout
-							</button>
+							<Link to={'/checkout'}>
+								<button
+									className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300 w-full"
+									onClick={handleCheckoutOrder}>
+									Checkout
+								</button>
+							</Link>
 						</>
 					)}
 				</div>

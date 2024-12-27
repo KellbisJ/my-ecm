@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign, faTimes, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faTrash, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { CardOrderDetailSkeleton } from '../Skeletons';
 import { CartContext } from '../../context/CartContext';
 
@@ -23,8 +23,8 @@ const OrderCard = ({ order, loading }) => {
 				<CardOrderDetailSkeleton />
 			) : (
 				<div className="bg-white rounded-lg shadow-md mb-4 p-4 max-w-sm relative">
-					<button className="absolute top-0 left-0 text-gray-500 hover:text-gray-900 transition duration-300 px-2" onClick={handleRemoveFromCart}>
-						<FontAwesomeIcon icon={faTimes} />
+					<button className="absolute top-0 left-0 text-gray-500 hover:text-red-600 transition duration-300 px-2" onClick={handleRemoveFromCart}>
+						<FontAwesomeIcon icon={faTrash} />
 					</button>
 					<div className="flex justify-center mb-4">
 						<img src={order.image} alt={order.title} className="w-24 h-24 object-contain object-center rounded-lg" />

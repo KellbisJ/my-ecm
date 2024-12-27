@@ -23,9 +23,9 @@ const useProductOrder = () => {
 			totalAllProducts: totalGeneralProductsOrdered,
 			totalPrice: totalPrice,
 		};
-		setCart([]);
-		setCount(0);
-		setOrder([...order, orderToAdd]);
+		// setCart([]);
+		// setCount(0);
+		// setOrder([...order, orderToAdd]);
 	};
 
 	return { createProductOrder, orderCheckout };
