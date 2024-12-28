@@ -22,20 +22,22 @@ const CheckoutCard = ({ product, loading }) => {
 			{loading ? (
 				<CardCheckoutCartSkeleton />
 			) : (
-				<div className="flex justify-start items-center gap-4 bg-white rounded-lg shadow-md p-4 mb-4 relative w-4/5 md:w-full">
-					<img src={product.image} alt={product.title} className="w-24 md:w-32 h-24 md:h-32 object-contain object-center" />
+				<div className="flex justify-start items-center gap-4 bg-white rounded-lg shadow-md mb-4 relative w-full">
+					<div className="w-20 md:w-32 h-24 md:h-32 p-3">
+						<img src={product.image} alt={product.title} className="w-full h-full object-contain object-center" />
+					</div>
 					<div className="flex-1">
-						<h2 className="text-sm md:text-lg font-bold w-4/5 md:w-11/12 text-wrap break-all">{product.title}</h2>
-						<div className="flex items-center justify-between mt-4">
-							<div className="flex items-center">
+						<h2 className="text-sm md:text-lg font-bold w-9/12 sm:w-4/5 md:w-11/12 text-wrap break-all p-3">{product.title}</h2>
+						<div className="flex items-center justify-between">
+							<div className="flex items-center p-3">
 								<button
-									className="bg-gray-200 transition hover:bg-red-600 rounded-full w-8 h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
+									className="bg-gray-200 transition hover:bg-red-600 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
 									onClick={() => handleUpdateProductOrder(false)}>
 									<FontAwesomeIcon icon={faMinus} />
 								</button>
 								<span className="mx-2 text-sm md:text-lg font-bold">{findInOrder?.quantity}</span>
 								<button
-									className="bg-gray-200 transition hover:bg-violet-600 rounded-full w-8 h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
+									className="bg-gray-200 transition hover:bg-violet-600 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
 									onClick={() => handleUpdateProductOrder(true)}>
 									<FontAwesomeIcon icon={faPlus} />
 								</button>

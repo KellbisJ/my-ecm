@@ -59,8 +59,8 @@ const ProductOrderCheckoutMenu = () => {
 							<div className="flex justify-between p-4">
 								<p className="text-lg font-medium">Total</p>
 								<span className="flex items-center justify-center text-sm font-medium">
+									<p className="text-lg font-medium mr-1">{total}</p>
 									<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
-									<p className="text-lg font-medium ml-1">{total}</p>
 								</span>
 							</div>
 							<Link to={'/checkout'}>

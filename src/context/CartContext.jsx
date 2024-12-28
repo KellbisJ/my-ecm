@@ -13,12 +13,12 @@ const CartProvider = ({ children }) => {
 
 	const isOrderInCart = (product) => cart.filter((item) => item.id === product.id);
 
-	const totalPriceInMyOrder = (eachProductOrder) => {
-		return eachProductOrder.reduce((total, order) => total + order.total, 0).toFixed(2);
-	};
-
 	const totalAllproductsInMyOrder = (eachProductOrder) => {
 		return eachProductOrder.reduce((quantity, order) => quantity + order.quantity, 0);
+	};
+
+	const totalPriceInMyOrder = (eachProductOrder) => {
+		return eachProductOrder.reduce((total, order) => total + order.total, 0).toFixed(2);
 	};
 
 	const addOrderToCart = (order) => {

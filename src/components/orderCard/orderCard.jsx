@@ -40,8 +40,8 @@ const OrderCard = ({ order, loading }) => {
 							</button>
 						</div>
 						<span className="flex items-center justify-center text-sm font-medium">
+							<p className="pr-1">{findInOrder?.total}</p>
 							<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
-							<p className="pl-1">{findInOrder?.total}</p>
 						</span>
 					</div>
 				</div>

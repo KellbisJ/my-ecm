@@ -35,8 +35,8 @@ const ProductDetail = () => {
 						<figcaption className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">{`${productData.category}`}</figcaption>
 					</figure>
 					<span className="flex items-center text-sm font-medium my-2">
+						<p className="pr-1">{productData.price}</p>
 						<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
-						<p className="pl-1">{productData.price}</p>
 					</span>
 					<p className="text-wrap text-sm md:text-base 2xl:text-lg">{productData.description}</p>
 				</div>

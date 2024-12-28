@@ -45,8 +45,8 @@ const Card = ({ product }) => {
 			<div className="flex-1 flex flex-col justify-center p-6 w-full bg-gray-200">
 				<p className="text-sm md:text-base 2xl:text-lg font-medium overflow-hidden text-ellipsis whitespace-nowrap">{`${product.title}`}</p>
 				<span className="flex items-center text-sm font-medium my-2">
+					<p className="pr-1">{product.price}</p>
 					<FontAwesomeIcon className="text-green-500" icon={faDollarSign} />
-					<p className="pl-1">{product.price}</p>
 				</span>
 			</div>
 		</div>
