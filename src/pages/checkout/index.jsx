@@ -33,7 +33,7 @@ function Checkout() {
 					))}
 				</div>
 
-				<div className="hidden md:flex flex-col justify-start gap-2 p-4 text-start bg-gray-200 rounded h-80 w-1/4">
+				<div className="hidden lg:flex flex-col justify-start gap-2 p-4 text-start bg-gray-200 rounded h-80 w-1/4">
 					<h2 className="text-lg md:text-xl font-semibold">Continue Shopping</h2>
 					<Link className="w-full">
 						<button className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300 w-full">Buy</button>
@@ -53,7 +53,7 @@ function Checkout() {
 					</h2>
 				</div>
 
-				<div className="flex md:hidden flex-col justify-center gap-2 text-start bg-gray-200 rounded fixed bottom-0 left-0 w-full min-h-40 max-h-40 overflow-y-auto">
+				<div className="flex lg:hidden flex-col justify-center gap-2 text-start bg-gray-200 rounded fixed bottom-0 left-0 w-full min-h-40 max-h-40 overflow-y-auto">
 					<div className="m-auto w-9/12">
 						<h2 className="text-lg md:text-xl font-semibold">Continue Shopping</h2>
 

@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { CustomNavLink } from './CustomNavLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
 import { ProductDetailContext } from '../../context/ProductDetailContext';
 
@@ -9,6 +10,7 @@ const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { count, showProductOrder, setShowProductOrder } = useContext(CartContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
+	const navigate = useNavigate();
 
 	const toggleMenu = () => {
 		setShowProductDetail(false);
@@ -21,14 +23,34 @@ const NavBar = () => {
 		setShowProductOrder(!showProductOrder);
 	};
 
+	const handleNavigate = (path) => {
+		navigate(path);
+	};
+
 	return (
-		<nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-slate-800  text-gray-200">
-			<li className="font-semibold text-lg lg:hidden list-none">
-				<CustomNavLink to={'/'}>Shopi</CustomNavLink>
-			</li>
-			<div className="lg:hidden cursor-pointer">
-				<FontAwesomeIcon icon={!open ? faBars : faTimes} onClick={toggleMenu} />
+		<nav className="flex lg:justify-between items-center fixed z-10 top-0 w-full py-5 px-4 text-sm font-light bg-slate-800  text-gray-200">
+			<div className="flex w-full items-center lg:hidden">
+				<li className="flex flex-1 font-semibold text-lg list-none">
+					<div className="lg:hidden cursor-pointer mr-4">
+						<FontAwesomeIcon icon={!open ? faBars : faTimes} onClick={toggleMenu} />
+					</div>
+					<CustomNavLink to={'/'}>Shopi</CustomNavLink>
+				</li>
+				<li className="flex flex-2 mr-4">
+					<FontAwesomeIcon icon={faUser} onClick={() => handleNavigate('/my-account')} />
+				</li>
+				<li className="flex flex-3 items-center">
+					<FontAwesomeIcon
+						icon={faShoppingCart}
+						onClick={() => {
+							handleNavigate('/checkout');
+							setShowProductOrder(false);
+						}}
+					/>
+					{count}
+				</li>
 			</div>
+
 			{open && (
 				<div className="fixed top-16 left-0 w-full h-screen bg-gray-200 z-20 py-5 px-8 flex justify-between text-base font-semibold lg:hidden text-black">
 					<ul className="mt-4 flex flex-col gap-3 text-wrap">
@@ -57,13 +79,6 @@ const NavBar = () => {
 						</li>
 						<li>
 							<CustomNavLink to={'/my-account'}>My Account</CustomNavLink>
-						</li>
-						<li>
-							<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
-						</li>
-						<li className="flex justify-between items-center" onClick={toggleOrderCheckoutMenu}>
-							<FontAwesomeIcon icon={faShoppingCart} />
-							{count}
 						</li>
 					</ul>
 				</div>
@@ -103,7 +118,12 @@ const NavBar = () => {
 				<li>
 					<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
 				</li>
-				<li className="cursor-pointer" onClick={toggleOrderCheckoutMenu}>
+				<li
+					className="cursor-pointer"
+					onClick={() => {
+						handleNavigate('/checkout');
+						setShowProductOrder(false);
+					}}>
 					<FontAwesomeIcon icon={faShoppingCart} />
 					{count}
 				</li>
