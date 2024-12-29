@@ -5,11 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
 import { ProductDetailContext } from '../../context/ProductDetailContext';
+import { AuthContext } from '../../context/authContext';
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { count, showProductOrder, setShowProductOrder } = useContext(CartContext);
+	const { user, token } = useContext(AuthContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
+
 	const navigate = useNavigate();
 
 	const toggleMenu = () => {
@@ -17,18 +20,21 @@ const NavBar = () => {
 		setShowProductOrder(false);
 		setOpen(!open);
 	};
-	const toggleOrderCheckoutMenu = () => {
-		setShowProductDetail(false);
-		setOpen(false);
-		setShowProductOrder(!showProductOrder);
-	};
 
 	const handleNavigate = (path) => {
 		navigate(path);
 	};
 
+	const handleUserNavigate = () => {
+		if (user && token) {
+			navigate('/my-account');
+		} else {
+			navigate('/sign-in');
+		}
+	};
+
 	return (
-		<nav className="flex lg:justify-between items-center fixed z-10 top-0 w-full py-5 px-4 text-sm font-light bg-slate-800  text-gray-200">
+		<nav className="flex lg:justify-between items-center fixed z-10 top-0 w-full py-5 px-4 text-sm font-light bg-slate-800 text-gray-200">
 			<div className="flex w-full items-center lg:hidden">
 				<li className="flex flex-1 font-semibold text-lg list-none">
 					<div className="lg:hidden cursor-pointer mr-4">
@@ -37,7 +43,7 @@ const NavBar = () => {
 					<CustomNavLink to={'/'}>Shopi</CustomNavLink>
 				</li>
 				<li className="flex flex-2 mr-4">
-					<FontAwesomeIcon icon={faUser} onClick={() => handleNavigate('/my-account')} />
+					<FontAwesomeIcon icon={faUser} onClick={handleUserNavigate} />
 				</li>
 				<li className="flex flex-3 items-center">
 					<FontAwesomeIcon
@@ -113,11 +119,9 @@ const NavBar = () => {
 					<CustomNavLink to={'/my-orders'}>My Orders</CustomNavLink>
 				</li>
 				<li>
-					<CustomNavLink to={'/my-account'}>My Account</CustomNavLink>
+					<FontAwesomeIcon icon={faUser} onClick={handleUserNavigate} />
 				</li>
-				<li>
-					<CustomNavLink to={'/sing-in'}>SingIn</CustomNavLink>
-				</li>
+				<li>{user && token ? <CustomNavLink to={'/sign-out'}>SingOut</CustomNavLink> : <CustomNavLink to={'/sign-in'}>SingIn</CustomNavLink>}</li>
 				<li
 					className="cursor-pointer"
 					onClick={() => {

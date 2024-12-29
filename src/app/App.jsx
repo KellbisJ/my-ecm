@@ -6,20 +6,23 @@ import { CartProvider } from '../context/CartContext';
 import { ProductDetailProvider } from '../context/ProductDetailContext';
 import { ProductDetailAndOrderProvider } from '../context/productDetailAndOrderContext';
 import { ProductDetailAndOrder } from '../components/productDetailAndOrder';
+import { AuthProvider } from '../context/authContext';
 
 const App = () => {
 	return (
-		<CartProvider>
-			<ProductDetailProvider>
-				<ProductDetailAndOrderProvider>
-					<BrowserRouter>
-						<NavBar />
-						<AppRoutes />
-						<ProductDetailAndOrder />
-					</BrowserRouter>
-				</ProductDetailAndOrderProvider>
-			</ProductDetailProvider>
-		</CartProvider>
+		<AuthProvider>
+			<CartProvider>
+				<ProductDetailProvider>
+					<ProductDetailAndOrderProvider>
+						<BrowserRouter>
+							<NavBar />
+							<AppRoutes />
+							<ProductDetailAndOrder />
+						</BrowserRouter>
+					</ProductDetailAndOrderProvider>
+				</ProductDetailProvider>
+			</CartProvider>
+		</AuthProvider>
 	);
 };
 

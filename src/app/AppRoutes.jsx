@@ -6,7 +6,9 @@ import { MyAccount } from '../pages/myAccount';
 import { MyOrder } from '../pages/myOrder';
 import { MyOrders } from '../pages/myOrders';
 import { NotFound } from '../pages/notFound';
-import { SingIn } from '../pages/singIn';
+import { SignIn } from '../pages/signIn';
+import { SignOut } from '../pages/signOut';
+import { AuthRedirect } from '../auth';
 
 const AppRoutes = () => {
 	const routes = useRoutes([
@@ -15,12 +17,24 @@ const AppRoutes = () => {
 			element: <Home />,
 		},
 		{
+			path: '/home',
+			element: <Home />,
+		},
+		{
 			path: '/checkout',
 			element: <Checkout />,
 		},
 		{
+			path: '/sign-in',
+			element: <SignIn />,
+		},
+		{
 			path: '/my-account',
-			element: <MyAccount />,
+			element: (
+				<AuthRedirect>
+					<MyAccount />
+				</AuthRedirect>
+			),
 		},
 		{
 			path: '/my-order',
@@ -31,8 +45,8 @@ const AppRoutes = () => {
 			element: <MyOrders />,
 		},
 		{
-			path: '/sing-in',
-			element: <SingIn />,
+			path: '/sign-out',
+			element: <SignOut />,
 		},
 		{
 			path: '/*',
