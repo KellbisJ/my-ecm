@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/authContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 function SignOut() {
-	const { user, token } = useUserData();
+	const { user, token, userId } = useUserData();
 	const { signOut } = useContext(AuthContext);
 	const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function SignOut() {
 		navigate('/home');
 	};
 
-	if (user && token) {
+	if (user && token && userId) {
 		return (
 			<Layout>
 				<div className="text-center max-w-md mx-auto h-full">

@@ -10,7 +10,7 @@ import { AuthContext } from '../../context/authContext';
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { count, showProductOrder, setShowProductOrder } = useContext(CartContext);
-	const { user, token } = useContext(AuthContext);
+	const { user, token, userId } = useContext(AuthContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
 
 	const navigate = useNavigate();
@@ -26,7 +26,7 @@ const NavBar = () => {
 	};
 
 	const handleUserNavigate = () => {
-		if (user && token) {
+		if (user && token && userId) {
 			navigate('/my-account');
 		} else {
 			navigate('/sign-in');
@@ -121,7 +121,9 @@ const NavBar = () => {
 				<li>
 					<FontAwesomeIcon icon={faUser} onClick={handleUserNavigate} />
 				</li>
-				<li>{user && token ? <CustomNavLink to={'/sign-out'}>SingOut</CustomNavLink> : <CustomNavLink to={'/sign-in'}>SingIn</CustomNavLink>}</li>
+				<li>
+					{user && token && userId ? <CustomNavLink to={'/sign-out'}>SingOut</CustomNavLink> : <CustomNavLink to={'/sign-in'}>SingIn</CustomNavLink>}
+				</li>
 				<li
 					className="cursor-pointer"
 					onClick={() => {

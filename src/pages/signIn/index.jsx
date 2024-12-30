@@ -4,13 +4,15 @@ import { Layout } from '../../components/layout';
 import { AuthContext } from '../../context/authContext';
 import { PostUserLogin } from '../../api/postUserLogin';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function SignIn() {
 	const [users, setUsers] = useState([]);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [userSelected, setUserSelected] = useState(false);
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -33,13 +35,11 @@ function SignIn() {
 		fetchData();
 	}, []);
 
-	useEffect(() => {
-		if (!userSelected && users.length > 0) {
-			const randomUser = users[Math.floor(Math.random() * users.length)];
-			setSelectedUser(randomUser);
-			setUserSelected(true);
-		}
-	}, [users, userSelected]);
+	const handleSelectUser = (event) => {
+		const selectedUserId = event.target.value;
+		const selectedUser = users.find((user) => user.id === parseInt(selectedUserId));
+		setSelectedUser(selectedUser);
+	};
 
 	const handleLogin = async () => {
 		try {
@@ -47,7 +47,7 @@ function SignIn() {
 			const response = await PostUserLogin(selectedUser);
 			if (response) {
 				const { token } = response;
-				signIn(token, selectedUser.username);
+				signIn(selectedUser.username, token, selectedUser.id);
 				navigate('/home');
 			}
 		} catch (error) {
@@ -56,12 +56,31 @@ function SignIn() {
 		}
 	};
 
+	const toggleShowPassword = () => {
+		setShowPassword(!showPassword);
+	};
+
+	console.log(selectedUser);
+
 	return (
 		<Layout>
 			{loading ? (
 				<div>Loading... skeleton*</div>
 			) : !selectedUser ? (
-				<div>Loading... skeleton*</div>
+				<div>
+					<h2 className="text-lg font-bold mb-4">Select a user to sign-in</h2>
+					<select
+						className="block w-full pl-10 pr-10 py-3 text-gray-700 border border-gray-300 rounded-md"
+						value={selectedUser?.id}
+						onChange={handleSelectUser}>
+						<option value="">Select a user</option>
+						{users.map((user) => (
+							<option key={user.id} value={user.id}>
+								{user.username}
+							</option>
+						))}
+					</select>
+				</div>
 			) : (
 				<div className="max-w-md mx-auto p-4 border border-gray-300 rounded-md shadow-md">
 					<h2 className="text-lg font-bold mb-4">Sign In</h2>
@@ -82,13 +101,18 @@ function SignIn() {
 							<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
 								Password
 							</label>
-							<input
-								className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-								id="password"
-								type="password"
-								value={selectedUser.password}
-								readOnly
-							/>
+							<div className="relative">
+								<input
+									className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+									id="password"
+									type={showPassword ? 'text' : 'password'}
+									value={selectedUser.password}
+									readOnly
+								/>
+								<span className="absolute top-1 right-3">
+									<FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4 cursor-pointer" onClick={toggleShowPassword} />
+								</span>
+							</div>
 						</div>
 						<div className="mb-4">
 							<button

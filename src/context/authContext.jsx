@@ -4,16 +4,16 @@ import { useUserData } from '../hooks/useUserData';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-	const { user, token, updateUserData, clearUserData } = useUserData();
+	const { user, token, userId, updateUserData, clearUserData } = useUserData();
 
-	const signIn = (token, username) => {
-		updateUserData(username, token);
+	const signIn = (username, token, userId) => {
+		updateUserData(username, token, userId);
 	};
 	const signOut = () => {
 		clearUserData();
 	};
 
-	return <AuthContext.Provider value={{ user, token, signIn, signOut }}>{children}</AuthContext.Provider>;
+	return <AuthContext.Provider value={{ user, token, userId, signIn, signOut }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthContext, AuthProvider };

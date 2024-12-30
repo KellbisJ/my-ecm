@@ -1,15 +1,16 @@
 import React, { useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
 const AuthRedirect = ({ children }) => {
-	const { user, token } = useContext(AuthContext);
+	const { user, token, userId } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (!user && !token) {
-			<Navigate to="/sign-in" />;
+		if (!user && !token && !userId) {
+			navigate('/sign-in');
 		}
-	}, [user, token]);
+	}, [user, token, userId, navigate]);
 
 	return children;
 };
