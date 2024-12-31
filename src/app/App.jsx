@@ -7,6 +7,7 @@ import { ProductDetailProvider } from '../context/ProductDetailContext';
 import { ProductDetailAndOrderProvider } from '../context/productDetailAndOrderContext';
 import { ProductDetailAndOrder } from '../components/productDetailAndOrder';
 import { AuthProvider } from '../context/authContext';
+import './App.css';
 
 const App = () => {
 	return (

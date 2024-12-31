@@ -3,7 +3,7 @@ import { Footer } from '../footer';
 
 const Layout = ({ children }) => {
 	return (
-		<div className="flex-1 flex flex-col h-screen items-center mt-20 ">
+		<div className="flex-1 flex flex-col h-screen items-center mt-[68px] ">
 			<div className="flex-1">{children}</div>
 			<Footer />
 		</div>
