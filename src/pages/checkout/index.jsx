@@ -81,20 +81,20 @@ function Checkout() {
 				</div>
 			</Layout>
 		);
-	} else {
-		return (
-			<Layout>
-				<div className="flex items-center w-full h-full">
-					<div className="text-center h-4/6 m-auto">
-						<h2 className="p-4">No items in cart</h2>
-						<Link to={'/home'} className="w-full">
-							<button className="bg-violet-600 hover:bg-violet-700 text-white py-2 text-center transition w-full rounded">Back to home</button>
-						</Link>
-					</div>
-				</div>
-			</Layout>
-		);
 	}
+
+	return (
+		<Layout>
+			<div className="flex items-center w-full h-full">
+				<div className="text-center h-4/6 m-auto">
+					<h2 className="p-4">No items in cart</h2>
+					<Link to={'/home'}>
+						<button className="bg-violet-600 hover:bg-violet-700 text-white py-2 text-center transition w-60 rounded">Back to home</button>
+					</Link>
+				</div>
+			</div>
+		</Layout>
+	);
 }
 
 export { Checkout };

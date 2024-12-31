@@ -3,7 +3,7 @@ import { getUsers } from '../../api/getUsers';
 import { Layout } from '../../components/layout';
 import { AuthContext } from '../../context/authContext';
 import { PostUserLogin } from '../../api/postUserLogin';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { CircleLoader } from '../../components/circleLoader';
@@ -17,7 +17,7 @@ function SignIn() {
 
 	const navigate = useNavigate();
 
-	const { signIn } = useContext(AuthContext);
+	const { signIn, user, token, userId } = useContext(AuthContext);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -62,6 +62,21 @@ function SignIn() {
 	};
 
 	console.log(selectedUser);
+
+	if (user && token && userId) {
+		return (
+			<Layout>
+				<div className="flex items-center w-full h-full">
+					<div className="text-center h-4/6 m-auto">
+						<h2 className="p-4">You have already logged in.</h2>
+						<Link to={'/home'}>
+							<button className="bg-violet-600 hover:bg-violet-700 text-white py-2 text-center transition w-60 rounded">Back to home</button>
+						</Link>
+					</div>
+				</div>
+			</Layout>
+		);
+	}
 
 	return (
 		<Layout>
