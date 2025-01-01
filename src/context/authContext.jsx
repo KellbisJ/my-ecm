@@ -10,6 +10,8 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		if (user && token && userId) {
 			setLoading(false);
+		} else {
+			setLoading(false);
 		}
 	}, [user, token, userId]);
 
