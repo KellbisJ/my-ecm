@@ -8,7 +8,7 @@ import { MyOrders } from '../pages/myOrders';
 import { NotFound } from '../pages/notFound';
 import { SignIn } from '../pages/signIn';
 import { SignOut } from '../pages/signOut';
-import { AuthRedirect } from '../auth';
+import { AuthRedirect, ProtectedRoute } from '../auth';
 
 const AppRoutes = () => {
 	const routes = useRoutes([
@@ -32,7 +32,9 @@ const AppRoutes = () => {
 			path: '/my-account',
 			element: (
 				<AuthRedirect>
-					<MyAccount />
+					<ProtectedRoute>
+						<MyAccount />
+					</ProtectedRoute>
 				</AuthRedirect>
 			),
 		},
@@ -46,7 +48,13 @@ const AppRoutes = () => {
 		},
 		{
 			path: '/sign-out',
-			element: <SignOut />,
+			element: (
+				<AuthRedirect>
+					<ProtectedRoute>
+						<SignOut />
+					</ProtectedRoute>
+				</AuthRedirect>
+			),
 		},
 		{
 			path: '/*',

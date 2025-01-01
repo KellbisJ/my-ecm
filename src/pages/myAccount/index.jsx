@@ -3,9 +3,9 @@ import { Layout } from '../../components/layout';
 import { useUserData } from '../../hooks/useUserData';
 
 function MyAccount() {
-	const { user, token } = useUserData();
+	const { user, token, userId } = useUserData();
 
-	if (user && token) {
+	if (user && token && userId) {
 		return (
 			<Layout>
 				<div>

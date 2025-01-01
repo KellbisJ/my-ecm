@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
 const AuthRedirect = ({ children }) => {
@@ -15,4 +15,14 @@ const AuthRedirect = ({ children }) => {
 	return children;
 };
 
-export { AuthRedirect };
+const ProtectedRoute = ({ children }) => {
+	const { user, token, userId } = useContext(AuthContext);
+
+	if (!user || !token || !userId) {
+		return <Navigate to="/home" />;
+	}
+
+	return children;
+};
+
+export { AuthRedirect, ProtectedRoute };

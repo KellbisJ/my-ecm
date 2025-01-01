@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Layout } from '../../components/layout';
 import { useUserData } from '../../hooks/useUserData';
 import { AuthContext } from '../../context/authContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SignOut() {
 	const { user, token, userId } = useUserData();

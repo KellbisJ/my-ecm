@@ -48,7 +48,7 @@ function SignIn() {
 			const response = await PostUserLogin(selectedUser);
 			if (response) {
 				const { token } = response;
-				signIn(selectedUser.username, token, selectedUser.id);
+				signIn(selectedUser.username, token, selectedUser.id, selectedUser);
 				navigate('/home');
 			}
 		} catch (error) {
