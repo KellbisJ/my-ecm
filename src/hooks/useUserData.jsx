@@ -4,7 +4,7 @@ const useUserData = () => {
 	const [user, setUser] = useState(null);
 	const [token, setToken] = useState(null);
 	const [userId, setUserId] = useState(null);
-	const [allUserData, setAllUserData] = useState(null);
+	const [userData, setUserData] = useState(null);
 
 	useEffect(() => {
 		const storedUser = localStorage.getItem('user__fake');
@@ -16,12 +16,12 @@ const useUserData = () => {
 			setUser(JSON.parse(storedUser));
 			setToken(JSON.parse(storedToken));
 			setUserId(JSON.parse(storedUserId));
-			setAllUserData(JSON.parse(storedUserData));
+			setUserData(JSON.parse(storedUserData));
 		} else {
 			setUser(null);
 			setToken(null);
 			setUserId(null);
-			setAllUserData(null);
+			setUserData(null);
 		}
 	}, []);
 
@@ -29,7 +29,7 @@ const useUserData = () => {
 		setUser(newUser);
 		setToken(newToken);
 		setUserId(newUserId);
-		setAllUserData(allUserData);
+		setUserData(allUserData);
 		localStorage.setItem('user__fake', JSON.stringify(newUser));
 		localStorage.setItem('token__fake', JSON.stringify(newToken));
 		localStorage.setItem('userId__fake', JSON.stringify(newUserId));
@@ -40,14 +40,14 @@ const useUserData = () => {
 		setUser(null);
 		setToken(null);
 		setUserId(null);
-		setAllUserData(null);
+		setUserData(null);
 		localStorage.removeItem('user__fake');
 		localStorage.removeItem('token__fake');
 		localStorage.removeItem('userId__fake');
 		localStorage.removeItem('userData__fake');
 	};
 
-	return { user, token, userId, allUserData, updateUserData, clearUserData };
+	return { user, token, userId, userData, updateUserData, clearUserData };
 };
 
 export { useUserData };

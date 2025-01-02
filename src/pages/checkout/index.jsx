@@ -27,7 +27,7 @@ function Checkout() {
 	if (cart.length > 0) {
 		return (
 			<Layout>
-				<div className="flex w-screen justify-center gap-4 p-6">
+				<div className="flex container w-[90vw] justify-center p-6 gap-4">
 					<div className="flex flex-col justify-start items-center p-4 gap-2 bg-gray-200 rounded my-0 w-full min-h-36 max-h-36 md:min-h-80 md:max-h-80  overflow-y-auto">
 						{cart.map((productOrder) => (
 							<CheckoutCard key={productOrder.id} product={productOrder} loading={loading} />
@@ -85,7 +85,7 @@ function Checkout() {
 
 	return (
 		<Layout>
-			<div className="flex items-center w-full h-full">
+			<div className="flex items-center w-full min-h-[90vh]">
 				<div className="text-center h-4/6 m-auto">
 					<h2 className="p-4">No items in cart</h2>
 					<Link to={'/home'}>

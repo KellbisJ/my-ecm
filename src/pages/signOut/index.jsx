@@ -17,7 +17,7 @@ function SignOut() {
 	if (user && token && userId) {
 		return (
 			<Layout>
-				<div className="flex flex-col items-center justify-center w-full h-full">
+				<div className="flex flex-col items-center justify-center w-full min-h-[90vh]">
 					<div className="flex flex-col items-center justify-center w-full p-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg">
 						<div className="w-full max-w-md bg-white p-6 rounded shadow-lg">
 							<h2 className="text-lg font-bold text-gray-800 mb-6">Sign out</h2>

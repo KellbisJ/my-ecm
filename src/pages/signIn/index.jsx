@@ -66,7 +66,7 @@ function SignIn() {
 	if (user && token && userId) {
 		return (
 			<Layout>
-				<div className="flex items-center w-full h-full">
+				<div className="flex items-center w-full min-h-[90vh]">
 					<div className="text-center h-4/6 m-auto">
 						<h2 className="p-4">You have already logged in.</h2>
 						<Link to={'/home'}>
@@ -83,7 +83,7 @@ function SignIn() {
 			{loading ? (
 				<CircleLoader />
 			) : !selectedUser ? (
-				<div className="flex flex-col items-center justify-center w-full h-full">
+				<div className="min-h-[90vh] flex items-center justify-center">
 					<div className="flex flex-col items-center justify-center w-full p-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg">
 						<div className="w-full max-w-md bg-white p-6 rounded shadow-lg">
 							<h2 className="text-base sm:text-2xl font-semibold text-gray-800 mb-6">Select a user to sign-in</h2>
@@ -102,7 +102,7 @@ function SignIn() {
 					</div>
 				</div>
 			) : (
-				<div className="flex flex-col justify-center w-full h-full p-4">
+				<div className="min-h-[90vh] flex items-center justify-center">
 					<div className="flex flex-col items-center justify-center w-full h-auto p-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg">
 						<div className="max-w-md border rounded shadow-md bg-white p-6">
 							<h2 className="text-lg font-bold mb-4">Sign In</h2>
@@ -131,8 +131,8 @@ function SignIn() {
 											value={selectedUser.password}
 											readOnly
 										/>
-										<span className="absolute top-1 right-3">
-											<FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4 cursor-pointer" onClick={toggleShowPassword} />
+										<span className="absolute top-1 right-3 cursor-pointer">
+											<FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4" onClick={toggleShowPassword} />
 										</span>
 									</div>
 								</div>

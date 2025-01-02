@@ -31,7 +31,7 @@ const Card = ({ product }) => {
 
 	return (
 		<div
-			className="flex flex-col bg-white cursor-pointer w-full max-w-52 h-auto rounded-lg shadow-lg transition-transform transform hover:scale-105 "
+			className="flex flex-col bg-white cursor-pointer w-full max-w-52 h-auto rounded-lg shadow-lg transition-transform transform hover:scale-105"
 			onClick={handleShowProductDetail}>
 			<figure className="relative mb-2 w-full h-4/6 overflow-visible rounded-lg">
 				<img src={`${product.image}`} alt="product" className="w-full h-full object-contain object-center" />

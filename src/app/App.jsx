@@ -4,7 +4,7 @@ import { AppRoutes } from './AppRoutes';
 import { NavBar } from '../components/navBar';
 import { CartProvider } from '../context/CartContext';
 import { ProductDetailProvider } from '../context/ProductDetailContext';
-import { ProductDetailAndOrderProvider } from '../context/productDetailAndOrderContext';
+import { ProductDetailAndOrderProvider } from '../context/ProductDetailAndOrderContext';
 import { ProductDetailAndOrder } from '../components/productDetailAndOrder';
 import { AuthProvider } from '../context/authContext';
 import './App.css';
