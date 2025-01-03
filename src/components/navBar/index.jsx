@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,13 @@ import { AuthContext } from '../../context/authContext';
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
-	const { count, showProductOrder, setShowProductOrder } = useContext(CartContext);
+	const { cart, showProductOrder, setShowProductOrder } = useContext(CartContext);
 	const { user, token, userId } = useContext(AuthContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
 
 	const navigate = useNavigate();
+
+	const cartCount = cart.length;
 
 	const toggleMenu = () => {
 		setShowProductDetail(false);
@@ -32,6 +34,8 @@ const NavBar = () => {
 			navigate('/sign-in');
 		}
 	};
+
+	console.log(cartCount);
 
 	return (
 		<nav className="flex lg:justify-between items-center fixed z-10 top-0 w-full py-5 px-4 bg-slate-800 text-gray-200">
@@ -53,7 +57,7 @@ const NavBar = () => {
 							setShowProductOrder(false);
 						}}
 					/>
-					{count}
+					{cartCount}
 				</li>
 			</div>
 
@@ -128,7 +132,7 @@ const NavBar = () => {
 						setShowProductOrder(false);
 					}}>
 					<FontAwesomeIcon icon={faShoppingCart} />
-					{count}
+					{cartCount}
 				</li>
 			</ul>
 		</nav>

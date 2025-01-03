@@ -4,18 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../../context/CartContext';
 import { OrderCard } from '../orderCard/orderCard';
-import { useProductOrder } from '../../hooks/useProductOrder';
 
 const ProductOrderCheckoutMenu = () => {
 	const { cart, setShowProductOrder, totalPriceInMyOrder } = useContext(CartContext);
 	const [loading, setLoading] = useState(true);
-
-	const { orderCheckout } = useProductOrder();
-
-	const handleCheckoutOrder = () => {
-		orderCheckout();
-		setShowProductOrder(false);
-	};
 
 	useEffect(() => {
 		setLoading(true);
@@ -65,9 +57,7 @@ const ProductOrderCheckoutMenu = () => {
 								</span>
 							</div>
 							<Link to={'/checkout'}>
-								<button
-									className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full"
-									onClick={handleCheckoutOrder}>
+								<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full">
 									Checkout
 								</button>
 							</Link>

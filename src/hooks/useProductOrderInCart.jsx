@@ -1,17 +1,8 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
-const useProductOrder = () => {
+const useProductOrderInCart = () => {
 	const { cart, setCart, count, setCount, totalPriceInMyOrder, addOrderToCart, order, setOrder, totalAllproductsInMyOrder } = useContext(CartContext);
-
-	const createProductOrder = (product) => {
-		const order = {
-			...product,
-			quantity: 1,
-			total: product.price,
-		};
-		return addOrderToCart(order);
-	};
 
 	const orderCheckout = () => {
 		const totalPrice = totalPriceInMyOrder(cart);
@@ -28,7 +19,7 @@ const useProductOrder = () => {
 		// setOrder([...order, orderToAdd]);
 	};
 
-	return { createProductOrder, orderCheckout };
+	return { orderCheckout };
 };
 
-export { useProductOrder };
+export { useProductOrderInCart };

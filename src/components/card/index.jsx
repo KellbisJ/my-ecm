@@ -4,13 +4,10 @@ import { CartContext } from '../../context/CartContext';
 import { ProductDetailContext } from '../../context/ProductDetailContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { useProductOrder } from '../../hooks/useProductOrder';
 
 const Card = ({ product }) => {
-	const { setShowProductOrder, isOrderInCart } = useContext(CartContext);
+	const { setShowProductOrder, createTempProductOrder, isOrderInCart } = useContext(CartContext);
 	const { setShowProductDetail, productDetailData } = useContext(ProductDetailContext);
-
-	const { createProductOrder } = useProductOrder();
 
 	const handleShowProductDetail = () => {
 		if (product) {
@@ -21,9 +18,11 @@ const Card = ({ product }) => {
 
 	const handleAddToCartClick = (e) => {
 		if (product) {
+			console.log('proood');
+
 			e.stopPropagation();
 			setShowProductDetail(false);
-			createProductOrder(product);
+			createTempProductOrder(product);
 		}
 	};
 
