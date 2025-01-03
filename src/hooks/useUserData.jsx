@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 
 const useUserData = () => {
@@ -7,10 +8,10 @@ const useUserData = () => {
 	const [userData, setUserData] = useState(null);
 
 	useEffect(() => {
-		const storedUser = localStorage.getItem('user__fake');
-		const storedToken = localStorage.getItem('token__fake');
-		const storedUserId = localStorage.getItem('userId__fake');
-		const storedUserData = localStorage.getItem('userData__fake');
+		const storedUser = localStorage.getItem('USER_FAKE');
+		const storedToken = localStorage.getItem('TOKEN_FAKE');
+		const storedUserId = localStorage.getItem('USER_ID_FAKE');
+		const storedUserData = localStorage.getItem('USER_DATA_FAKE');
 
 		if (storedUser && storedToken && storedUserId) {
 			setUser(JSON.parse(storedUser));
@@ -30,10 +31,10 @@ const useUserData = () => {
 		setToken(newToken);
 		setUserId(newUserId);
 		setUserData(allUserData);
-		localStorage.setItem('user__fake', JSON.stringify(newUser));
-		localStorage.setItem('token__fake', JSON.stringify(newToken));
-		localStorage.setItem('userId__fake', JSON.stringify(newUserId));
-		localStorage.setItem('userData__fake', JSON.stringify(allUserData));
+		localStorage.setItem('USER_FAKE', JSON.stringify(newUser));
+		localStorage.setItem('TOKEN_FAKE', JSON.stringify(newToken));
+		localStorage.setItem('USER_ID_FAKE', JSON.stringify(newUserId));
+		localStorage.setItem('USER_DATA_FAKE', JSON.stringify(allUserData));
 	};
 
 	const clearUserData = () => {
@@ -41,10 +42,10 @@ const useUserData = () => {
 		setToken(null);
 		setUserId(null);
 		setUserData(null);
-		localStorage.removeItem('user__fake');
-		localStorage.removeItem('token__fake');
-		localStorage.removeItem('userId__fake');
-		localStorage.removeItem('userData__fake');
+		localStorage.removeItem('USER_FAKE');
+		localStorage.removeItem('TOKEN_FAKE');
+		localStorage.removeItem('USER_ID_FAKE');
+		localStorage.removeItem('USER_DATA_FAKE');
 	};
 
 	return { user, token, userId, userData, updateUserData, clearUserData };

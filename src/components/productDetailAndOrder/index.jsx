@@ -10,14 +10,14 @@ const ProductDetailAndOrder = () => {
 	const { renderProductDetail, renderProductOrder } = useContext(ProductDetailAndOrderContext);
 	const { setShowProductDetail } = useContext(ProductDetailContext);
 	const { setShowProductOrder } = useContext(CartContext);
-	const showRenderProductDetailAndOrder = useRouteValidator();
+	const { validateToShowProductDetailAndOrder } = useRouteValidator();
 
 	useEffect(() => {
-		if (!showRenderProductDetailAndOrder) {
+		if (!validateToShowProductDetailAndOrder) {
 			setShowProductOrder(false);
 			setShowProductDetail(false);
 		}
-	}, [showRenderProductDetailAndOrder, setShowProductOrder, setShowProductDetail]);
+	}, [validateToShowProductDetailAndOrder, setShowProductOrder, setShowProductDetail]);
 
 	return (
 		<>

@@ -66,7 +66,7 @@ const ProductOrderCheckoutMenu = () => {
 							</div>
 							<Link to={'/checkout'}>
 								<button
-									className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300 w-full"
+									className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full"
 									onClick={handleCheckoutOrder}>
 									Checkout
 								</button>

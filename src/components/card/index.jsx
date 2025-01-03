@@ -39,7 +39,7 @@ const Card = ({ product }) => {
 				<button
 					className="absolute top-2 right-2 flex justify-center items-center bg-white w-8 h-8 rounded-full shadow-md"
 					onClick={handleAddToCartClick}>
-					<FontAwesomeIcon icon={productWasAdded ? faCheckCircle : faPlus} className="text-violet-600 text-center" />
+					<FontAwesomeIcon icon={productWasAdded ? faCheckCircle : faPlus} className="text-indigo-500 text-center" />
 				</button>
 			</figure>
 			<div className="flex-1 flex flex-col justify-center p-6 w-full bg-gray-200">

@@ -31,13 +31,13 @@ const CheckoutCard = ({ product, loading }) => {
 						<div className="flex items-center justify-between">
 							<div className="flex items-center p-3">
 								<button
-									className="bg-gray-200 transition hover:bg-red-600 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
+									className="bg-gray-200 transition hover:bg-red-500 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
 									onClick={() => handleUpdateProductOrder(false)}>
 									<FontAwesomeIcon icon={faMinus} />
 								</button>
 								<span className="mx-2 text-sm md:text-lg font-bold">{findInOrder?.quantity}</span>
 								<button
-									className="bg-gray-200 transition hover:bg-violet-600 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
+									className="bg-gray-200 transition hover:bg-violet-500 rounded-full w-7 sm:w-8 h-7 sm:h-8 text-gray-600 hover:text-white font-bold cursor-pointer"
 									onClick={() => handleUpdateProductOrder(true)}>
 									<FontAwesomeIcon icon={faPlus} />
 								</button>

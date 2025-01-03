@@ -61,7 +61,7 @@ function SignIn() {
 		setShowPassword(!showPassword);
 	};
 
-	console.log(selectedUser);
+	// console.log(selectedUser);
 
 	if (user && token && userId) {
 		return (
@@ -70,7 +70,7 @@ function SignIn() {
 					<div className="text-center h-4/6 m-auto">
 						<h2 className="p-4">You have already logged in.</h2>
 						<Link to={'/home'}>
-							<button className="bg-violet-600 hover:bg-violet-700 text-white py-2 text-center transition w-60 rounded">Back to home</button>
+							<button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 text-center transition w-60 rounded">Back to home</button>
 						</Link>
 					</div>
 				</div>
@@ -131,14 +131,14 @@ function SignIn() {
 											value={selectedUser.password}
 											readOnly
 										/>
-										<span className="absolute top-1 right-3 cursor-pointer">
+										<span className="absolute top-2 right-3 cursor-pointer">
 											<FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-4" onClick={toggleShowPassword} />
 										</span>
 									</div>
 								</div>
 								<div className="mb-4">
 									<button
-										className="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded transition"
+										className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded transition"
 										onClick={handleLogin}
 										type="button"
 										disabled={isButtonDisabled}>

@@ -37,7 +37,7 @@ function Checkout() {
 					<div className="hidden lg:flex flex-col justify-start gap-2 p-4 text-start bg-gray-200 rounded h-80 w-1/4">
 						<h2 className="text-lg md:text-xl font-semibold">Continue Shopping</h2>
 						<Link className="w-full">
-							<button className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition duration-300 w-full">Buy</button>
+							<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full">Buy</button>
 						</Link>
 						<div className="flex w-full justify-between">
 							<p>{`${totalAllProducts} Product/s`}</p>
@@ -74,7 +74,7 @@ function Checkout() {
 								</h2>
 							</div>
 							<Link className="w-full">
-								<button className="bg-violet-600 text-white text-center py-2 rounded-lg hover:bg-violet-700 transition w-full">Buy</button>
+								<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition w-full">Buy</button>
 							</Link>
 						</div>
 					</div>
@@ -89,7 +89,7 @@ function Checkout() {
 				<div className="text-center h-4/6 m-auto">
 					<h2 className="p-4">No items in cart</h2>
 					<Link to={'/home'}>
-						<button className="bg-violet-600 hover:bg-violet-700 text-white py-2 text-center transition w-60 rounded">Back to home</button>
+						<button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 text-center transition w-60 rounded">Back to home</button>
 					</Link>
 				</div>
 			</div>

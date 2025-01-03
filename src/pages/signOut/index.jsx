@@ -10,8 +10,8 @@ function SignOut() {
 	const navigate = useNavigate();
 
 	const handleSignOut = () => {
-		signOut();
 		navigate('/home');
+		signOut();
 	};
 
 	if (user && token && userId) {
@@ -22,7 +22,7 @@ function SignOut() {
 						<div className="w-full max-w-md bg-white p-6 rounded shadow-lg">
 							<h2 className="text-lg font-bold text-gray-800 mb-6">Sign out</h2>
 							<p className="text-gray-600 mb-4">Are you sure that you want to leave, {user}?</p>
-							<button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition mt-4" onClick={handleSignOut}>
+							<button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition mt-4" onClick={handleSignOut}>
 								Logout
 							</button>
 						</div>
