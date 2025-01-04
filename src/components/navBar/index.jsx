@@ -35,7 +35,7 @@ const NavBar = () => {
 		}
 	};
 
-	console.log(cartCount);
+	// console.log(cartCount);
 
 	return (
 		<nav className="flex lg:justify-between items-center fixed z-10 top-0 w-full py-5 px-4 bg-slate-800 text-gray-200">

@@ -5,16 +5,23 @@ import { faTimes, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { CheckoutCard } from '../../components/checkoutCard';
 import { Layout } from '../../components/layout';
 import { CartContext } from '../../context/CartContext';
+import { useProductOrderInCart } from '../../hooks/useProductOrderInCart';
 
 function Checkout() {
-	const { cart, totalAllproductsInMyOrder, totalPriceInMyOrder } = useContext(CartContext);
+	const [loading, setLoading] = useState(true);
+
+	const { cart, totalAllproductsInMyOrder, totalPriceInMyOrder, tempOrder } = useContext(CartContext);
+	const { newOrderCheckout, clearTempOrder } = useProductOrderInCart();
 
 	const totalAllProducts = totalAllproductsInMyOrder(cart);
 	const totalAllProductsPrice = totalPriceInMyOrder(cart);
 
-	console.log('totalAllProducts:', totalAllProducts, 'totalAllProductsPrice:', totalAllProductsPrice);
-
-	const [loading, setLoading] = useState(true);
+	const handleBuy = async () => {
+		setLoading(true);
+		await clearTempOrder();
+		await newOrderCheckout();
+		setLoading(false);
+	};
 
 	useEffect(() => {
 		setLoading(true);
@@ -23,6 +30,10 @@ function Checkout() {
 		}, 200);
 		return () => clearTimeout(timeoutId);
 	}, [cart]);
+
+	useEffect(() => {
+		console.log('TempOrder actual:', tempOrder);
+	}, [tempOrder]);
 
 	if (cart.length > 0) {
 		return (
@@ -36,8 +47,12 @@ function Checkout() {
 
 					<div className="hidden lg:flex flex-col justify-start gap-2 p-4 text-start bg-gray-200 rounded h-80 w-1/4">
 						<h2 className="text-lg md:text-xl font-semibold">Continue Shopping</h2>
-						<Link className="w-full">
-							<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full">Buy</button>
+						<Link className="w-full" to={'/my-order/success'}>
+							<button
+								className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition duration-300 w-full"
+								onClick={handleBuy}>
+								Buy
+							</button>
 						</Link>
 						<div className="flex w-full justify-between">
 							<p>{`${totalAllProducts} Product/s`}</p>
@@ -73,8 +88,10 @@ function Checkout() {
 									<FontAwesomeIcon className="text-green-500 pl-1" icon={faDollarSign} />
 								</h2>
 							</div>
-							<Link className="w-full">
-								<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition w-full">Buy</button>
+							<Link className="w-full" to={'/my-order/success'}>
+								<button className="bg-indigo-500 text-white text-center py-2 rounded-lg hover:bg-indigo-600 transition w-full" onClick={handleBuy}>
+									Buy
+								</button>
 							</Link>
 						</div>
 					</div>

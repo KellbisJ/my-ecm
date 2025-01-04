@@ -7,33 +7,35 @@ const CartProvider = ({ children }) => {
 	const {
 		cart,
 		setCart,
-		count,
-		setCount,
+		tempOrder,
+		setTempOrder,
+		orders,
+		setOrders,
 		showProductOrder,
 		setShowProductOrder,
 		createTempProductOrder,
 		updateOrderFromCart,
 		removeOrderFromCart,
 		addOrderToCart,
-		order,
-		setOrder,
 		isOrderInCart,
 		totalPriceInMyOrder,
 		totalAllproductsInMyOrder,
 		orderInCart,
 		productOrderLimit,
+		removeAllOrdersFromCart,
 	} = useTempCartData();
 
-	console.log(cart);
-	// console.log(order);
+	// console.log(cart);
 
 	return (
 		<CartContext.Provider
 			value={{
 				cart,
 				setCart,
-				count,
-				setCount,
+				tempOrder,
+				setTempOrder,
+				orders,
+				setOrders,
 				createTempProductOrder,
 				addOrderToCart,
 				updateOrderFromCart,
@@ -45,8 +47,7 @@ const CartProvider = ({ children }) => {
 				setShowProductOrder,
 				totalPriceInMyOrder,
 				totalAllproductsInMyOrder,
-				order,
-				setOrder,
+				removeAllOrdersFromCart,
 			}}>
 			{children}
 		</CartContext.Provider>

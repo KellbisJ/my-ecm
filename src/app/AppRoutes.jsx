@@ -3,8 +3,9 @@ import { useRoutes } from 'react-router-dom';
 import { Home } from '../pages/home';
 import { Checkout } from '../pages/checkout';
 import { MyAccount } from '../pages/myAccount';
-import { MyOrder } from '../pages/myOrder';
 import { MyOrders } from '../pages/myOrders';
+import { MyOrder } from '../pages/myOrder';
+import { MyOrderSuccess } from '../pages/myOrderSuccess';
 import { NotFound } from '../pages/notFound';
 import { SignIn } from '../pages/signIn';
 import { SignOut } from '../pages/signOut';
@@ -37,12 +38,29 @@ const AppRoutes = () => {
 			),
 		},
 		{
-			path: '/my-order',
-			element: <MyOrder />,
+			path: '/my-orders',
+			element: (
+				<AuthRedirect>
+					<MyOrders />
+				</AuthRedirect>
+			),
 		},
 		{
-			path: '/my-orders',
-			element: <MyOrders />,
+			path: '/my-order',
+			element: (
+				<AuthRedirect>
+					<MyOrder />
+				</AuthRedirect>
+			),
+		},
+
+		{
+			path: '/my-order/success',
+			element: (
+				<AuthRedirect>
+					<MyOrderSuccess />
+				</AuthRedirect>
+			),
 		},
 		{
 			path: '/sign-out',

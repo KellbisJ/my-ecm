@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 
 const useTempCartData = () => {
 	const [cart, setCart] = useState([]);
-	const [count, setCount] = useState(0);
 	const [showProductOrder, setShowProductOrder] = useState(false);
-	const [order, setOrder] = useState([]);
+	const [tempOrder, setTempOrder] = useState([]);
+	const [orders, setOrders] = useState([]);
+	// const [allOrdersMadeData, setAllOrdersMadeData] = useState([]);
 
 	// ProductOrder in cart limitations and validations ---->
 
@@ -39,7 +40,6 @@ const useTempCartData = () => {
 
 			if (existingOrder.length < orderInCart) {
 				setCart([...cart, order]);
-				setCount(cart.length + 1);
 				setShowProductOrder(true);
 				localStorage.setItem('CART_TEMP_FAKE', JSON.stringify([...cart, order])); // Save cart status in LocalStorage
 			} else {
@@ -70,8 +70,12 @@ const useTempCartData = () => {
 	const removeOrderFromCart = (orderId) => {
 		const newCart = cart.filter((item) => item.id !== orderId);
 		setCart(newCart);
-		setCount(newCart.length);
-		localStorage.setItem('CART_TEMP_FAKE', JSON.stringify(newCart));
+		localStorage.setItem('CART_TEMP_FAKE', JSON.stringify(newCart)); // Save cart status in LocalStorage
+	};
+
+	const removeAllOrdersFromCart = () => {
+		setCart([]);
+		localStorage.setItem('CART_TEMP_FAKE', JSON.stringify([])); // Save cart status in LocalStorage
 	};
 
 	useEffect(() => {
@@ -86,12 +90,14 @@ const useTempCartData = () => {
 	return {
 		cart,
 		setCart,
-		count,
-		setCount,
 		showProductOrder,
 		setShowProductOrder,
-		order,
-		setOrder,
+		tempOrder,
+		setTempOrder,
+		orders,
+		setOrders,
+		// allOrdersMadeData,
+		// setAllOrdersMadeData,
 		isOrderInCart,
 		totalAllproductsInMyOrder,
 		totalPriceInMyOrder,
@@ -101,6 +107,7 @@ const useTempCartData = () => {
 		addOrderToCart,
 		updateOrderFromCart,
 		removeOrderFromCart,
+		removeAllOrdersFromCart,
 	};
 };
 

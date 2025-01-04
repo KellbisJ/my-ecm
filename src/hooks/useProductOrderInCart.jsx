@@ -1,25 +1,38 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { AuthContext } from '../context/authContext';
 
 const useProductOrderInCart = () => {
-	const { cart, setCart, count, setCount, totalPriceInMyOrder, addOrderToCart, order, setOrder, totalAllproductsInMyOrder } = useContext(CartContext);
+	const { cart, setCart, tempOrder, setTempOrder, orders, setOrders, totalPriceInMyOrder, totalAllproductsInMyOrder, removeAllOrdersFromCart } =
+		useContext(CartContext);
+	const { user, token, userId } = useContext(AuthContext);
 
-	const orderCheckout = () => {
-		const totalPrice = totalPriceInMyOrder(cart);
-		const totalGeneralProductsOrdered = totalAllproductsInMyOrder(cart);
-		const orderToAdd = {
-			date: '10/01/25',
-			products: cart,
-			totalProducts: cart.length,
-			totalAllProducts: totalGeneralProductsOrdered,
-			totalPrice: totalPrice,
-		};
-		// setCart([]);
-		// setCount(0);
-		// setOrder([...order, orderToAdd]);
+	const clearTempOrder = async () => {
+		console.log('Llamando clearTempOrder');
+		setTempOrder(() => []);
+		console.log('TempOrder después de setTempOrder([]):', tempOrder);
 	};
 
-	return { orderCheckout };
+	const newOrderCheckout = async () => {
+		if (user && token && userId) {
+			const totalPrice = totalPriceInMyOrder(cart);
+			const totalGeneralProductsOrdered = totalAllproductsInMyOrder(cart);
+			const newOrder = {
+				purchaseMadeBy: user,
+				date: '10/01/25',
+				products: cart,
+				totalProducts: cart.length,
+				totalAllProducts: totalGeneralProductsOrdered,
+				totalPrice: totalPrice,
+				buyerId: userId,
+			};
+			removeAllOrdersFromCart();
+			setTempOrder((prevTempOrder) => [...prevTempOrder, newOrder]);
+			setOrders((prevOrders) => [...prevOrders, newOrder]);
+			console.log('Nueva orden:', newOrder);
+		}
+	};
+	return { newOrderCheckout, clearTempOrder };
 };
 
 export { useProductOrderInCart };
