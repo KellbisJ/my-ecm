@@ -10,15 +10,14 @@ import { useProductOrderInCart } from '../../hooks/useProductOrderInCart';
 function Checkout() {
 	const [loading, setLoading] = useState(true);
 
-	const { cart, totalAllproductsInMyOrder, totalPriceInMyOrder, tempOrder } = useContext(CartContext);
-	const { newOrderCheckout, clearTempOrder } = useProductOrderInCart();
+	const { cart, totalAllproductsInMyOrder, totalPriceInMyOrder, tempOrder, orders } = useContext(CartContext);
+	const { newOrderCheckout } = useProductOrderInCart();
 
 	const totalAllProducts = totalAllproductsInMyOrder(cart);
 	const totalAllProductsPrice = totalPriceInMyOrder(cart);
 
 	const handleBuy = async () => {
 		setLoading(true);
-		await clearTempOrder();
 		await newOrderCheckout();
 		setLoading(false);
 	};
@@ -33,7 +32,8 @@ function Checkout() {
 
 	useEffect(() => {
 		console.log('TempOrder actual:', tempOrder);
-	}, [tempOrder]);
+		console.log('Orders para guardar:', orders);
+	}, [tempOrder, orders]);
 
 	if (cart.length > 0) {
 		return (

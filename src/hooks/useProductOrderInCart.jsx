@@ -3,15 +3,19 @@ import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/authContext';
 
 const useProductOrderInCart = () => {
-	const { cart, setCart, tempOrder, setTempOrder, orders, setOrders, totalPriceInMyOrder, totalAllproductsInMyOrder, removeAllOrdersFromCart } =
-		useContext(CartContext);
+	const {
+		cart,
+		setCart,
+		tempOrder,
+		setTempOrder,
+		orders,
+		setOrders,
+		totalPriceInMyOrder,
+		totalAllproductsInMyOrder,
+		removeAllOrdersFromCart,
+		saveUserPurchasedOrder,
+	} = useContext(CartContext);
 	const { user, token, userId } = useContext(AuthContext);
-
-	const clearTempOrder = async () => {
-		console.log('Llamando clearTempOrder');
-		setTempOrder(() => []);
-		console.log('TempOrder después de setTempOrder([]):', tempOrder);
-	};
 
 	const newOrderCheckout = async () => {
 		if (user && token && userId) {
@@ -28,11 +32,11 @@ const useProductOrderInCart = () => {
 			};
 			removeAllOrdersFromCart();
 			setTempOrder((prevTempOrder) => [...prevTempOrder, newOrder]);
-			setOrders((prevOrders) => [...prevOrders, newOrder]);
+			saveUserPurchasedOrder(newOrder);
 			console.log('Nueva orden:', newOrder);
 		}
 	};
-	return { newOrderCheckout, clearTempOrder };
+	return { newOrderCheckout };
 };
 
 export { useProductOrderInCart };

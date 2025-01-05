@@ -6,7 +6,6 @@ const useTempCartData = () => {
 	const [showProductOrder, setShowProductOrder] = useState(false);
 	const [tempOrder, setTempOrder] = useState([]);
 	const [orders, setOrders] = useState([]);
-	// const [allOrdersMadeData, setAllOrdersMadeData] = useState([]);
 
 	// ProductOrder in cart limitations and validations ---->
 
@@ -76,16 +75,35 @@ const useTempCartData = () => {
 	const removeAllOrdersFromCart = () => {
 		setCart([]);
 		localStorage.setItem('CART_TEMP_FAKE', JSON.stringify([])); // Save cart status in LocalStorage
+	}; // <----
+
+	const saveUserPurchasedOrder = (newOrder) => {
+		const newOrders = [...orders, newOrder];
+		setOrders(newOrders);
+		localStorage.setItem('USER_PURCHASED_ORDER_FAKE', JSON.stringify(newOrders)); // Save orders status in LocalStorage
+	};
+
+	const removeUserPurchasedOrder = (orderBuyerId) => {
+		const newOrders = orders.filter((item) => item.buyerId !== orderBuyerId);
+		setCart(newOrders);
+		localStorage.setItem('CART_TEMP_FAKE', JSON.stringify(newOrders)); // Save cart status in LocalStorage
 	};
 
 	useEffect(() => {
+		// cart localStorage data
 		const storedCart = localStorage.getItem('CART_TEMP_FAKE'); // Getting cart status from LocalStorage
 		if (storedCart) {
 			setCart(JSON.parse(storedCart));
-		} else {
-			setCart([]);
 		}
-	}, []); // <----
+	}, []);
+
+	useEffect(() => {
+		// orders localStorage data
+		const storedOrders = localStorage.getItem('USER_PURCHASED_ORDER_FAKE'); // Getting orders status from LocalStorage
+		if (storedOrders) {
+			setOrders(JSON.parse(storedOrders));
+		}
+	}, []);
 
 	return {
 		cart,
@@ -96,8 +114,6 @@ const useTempCartData = () => {
 		setTempOrder,
 		orders,
 		setOrders,
-		// allOrdersMadeData,
-		// setAllOrdersMadeData,
 		isOrderInCart,
 		totalAllproductsInMyOrder,
 		totalPriceInMyOrder,
@@ -108,6 +124,8 @@ const useTempCartData = () => {
 		updateOrderFromCart,
 		removeOrderFromCart,
 		removeAllOrdersFromCart,
+		saveUserPurchasedOrder,
+		removeUserPurchasedOrder,
 	};
 };
 

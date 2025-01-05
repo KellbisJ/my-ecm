@@ -23,6 +23,7 @@ const CartProvider = ({ children }) => {
 		orderInCart,
 		productOrderLimit,
 		removeAllOrdersFromCart,
+		saveUserPurchasedOrder,
 	} = useTempCartData();
 
 	// console.log(cart);
@@ -48,6 +49,7 @@ const CartProvider = ({ children }) => {
 				totalPriceInMyOrder,
 				totalAllproductsInMyOrder,
 				removeAllOrdersFromCart,
+				saveUserPurchasedOrder,
 			}}>
 			{children}
 		</CartContext.Provider>
