@@ -46,7 +46,7 @@ const AppRoutes = () => {
 			),
 		},
 		{
-			path: '/my-order',
+			path: '/my-order/:userName/:orderIndex',
 			element: (
 				<AuthRedirect>
 					<MyOrder />

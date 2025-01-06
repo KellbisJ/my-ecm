@@ -78,15 +78,17 @@ const CardOrderDetailSkeleton = () => {
 
 const CardCheckoutCartSkeleton = () => {
 	return (
-		<div className="flex justify-start items-center gap-4 bg-white rounded-lg shadow-md p-4 mb-4 relative animate-pulse w-64 sm:w-96 md:w-[580px] lg:w-[680px]">
-			<div className="w-40 h-36 bg-gray-300 rounded-lg"></div>
-			<div className="flex-1 w-40">
-				<h2 className="h-6 bg-gray-300 rounded-lg mb-2" style={{ width: '70%' }}></h2>
-				<div className="flex items-center justify-between mt-4">
-					<div className="flex items-center">
-						<div className="bg-gray-300 rounded-full w-8 h-8"></div>
+		<div className="flex justify-start items-center gap-4 bg-white rounded-lg shadow-md mb-4 relative animate-pulse w-full">
+			<div className="w-20 md:w-32 h-24 md:h-32 p-3">
+				<div className="w-full h-full bg-gray-300 rounded-lg"></div>
+			</div>
+			<div className="flex-1">
+				<h2 className="h-6 bg-gray-300 rounded-lg mb-2 w-9/12 sm:w-4/5 md:w-11/12 p-3"></h2>
+				<div className="flex items-center justify-between">
+					<div className="flex items-center p-3">
+						<div className="bg-gray-300 rounded-full w-7 sm:w-8 h-7 sm:h-8"></div>
 						<span className="mx-2 h-6 w-6 bg-gray-300 rounded-lg"></span>
-						<div className="bg-gray-300 rounded-full w-8 h-8"></div>
+						<div className="bg-gray-300 rounded-full w-7 sm:w-8 h-7 sm:h-8"></div>
 					</div>
 				</div>
 			</div>
@@ -95,4 +97,41 @@ const CardCheckoutCartSkeleton = () => {
 	);
 };
 
-export { CardSkeleton, CardDetailSkeleton, CardOrderDetailSkeleton, CardCheckoutCartSkeleton };
+const CardContinueShoppingInCart = () => {
+	return (
+		<>
+			<div className="hidden lg:flex flex-col justify-start gap-2 p-4 text-start bg-gray-200 rounded h-80 w-1/4 animate-pulse">
+				<div className="bg-gray-300 h-6 rounded w-2/3"></div>
+				<div className="bg-gray-300 h-10 rounded w-full mb-2"></div>
+				<div className="flex w-full justify-between">
+					<div className="bg-gray-300 h-6 rounded w-1/3"></div>
+					<div className="bg-gray-300 h-6 rounded w-1/3"></div>
+				</div>
+				<div className="bg-gray-300 h-6 rounded w-1/4"></div>
+				<div className="bg-gray-300 h-10 rounded w-1/2"></div>
+			</div>
+
+			<div className="flex lg:hidden flex-col justify-center gap-2 text-start bg-gray-200 rounded fixed bottom-0 left-0 w-full min-h-40 max-h-40 overflow-y-auto animate-pulse">
+				<div className="m-auto w-9/12">
+					<div className="h-6 bg-gray-300 rounded mb-2"></div>
+
+					<div className="flex justify-between text-wrap break-all mb-2">
+						<div className="h-4 bg-gray-300 rounded w-1/3"></div>
+						<div className="h-4 bg-gray-300 rounded w-1/4"></div>
+					</div>
+
+					<div className="flex justify-between w-full text-wrap break-all items-center mb-4">
+						<div className="h-4 bg-gray-300 rounded w-1/4"></div>
+						<div className="h-8 bg-gray-300 rounded w-1/3"></div>
+					</div>
+
+					<div className="w-full">
+						<div className="h-10 bg-gray-300 rounded-lg"></div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export { CardSkeleton, CardDetailSkeleton, CardOrderDetailSkeleton, CardCheckoutCartSkeleton, CardContinueShoppingInCart };

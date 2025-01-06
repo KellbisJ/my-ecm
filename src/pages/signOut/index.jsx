@@ -1,18 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Layout } from '../../components/layout';
 import { useUserData } from '../../hooks/useUserData';
 import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { CircleLoader } from '../../components/circleLoader';
 
 function SignOut() {
 	const { user, token, userId } = useUserData();
 	const { signOut } = useContext(AuthContext);
+	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 
 	const handleSignOut = () => {
 		navigate('/home');
 		signOut();
 	};
+
+	useEffect(() => {
+		setLoading(true);
+		const timeoutId = setTimeout(() => {
+			setLoading(false);
+		}, 200);
+		return () => clearTimeout(timeoutId);
+	}, []);
+
+	if (loading) {
+		return (
+			<Layout>
+				<CircleLoader />
+			</Layout>
+		);
+	}
 
 	if (user && token && userId) {
 		return (

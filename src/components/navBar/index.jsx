@@ -65,22 +65,22 @@ const NavBar = () => {
 				<div className="fixed top-16 left-0 w-full h-screen bg-gray-200 z-20 py-5 px-8 flex justify-between text-base font-semibold lg:hidden text-black">
 					<ul className="mt-4 flex flex-col gap-3 text-wrap">
 						<li>
-							<Link to={'/all'}>All</Link>
+							<Link to={'/home'}>All</Link>
 						</li>
 						<li>
-							<Link to={'/clothes'}>Clothes</Link>
+							<Link to={'/home'}>Clothes</Link>
 						</li>
 						<li>
-							<Link to={'/electronics'}>Electronics</Link>
+							<Link to={'/home'}>Electronics</Link>
 						</li>
 						<li>
-							<Link to={'/furnitures'}>Furnitures</Link>
+							<Link to={'/home'}>Furnitures</Link>
 						</li>
 						<li>
-							<Link to={'/toys'}>Toys</Link>
+							<Link to={'/home'}>Toys</Link>
 						</li>
 						<li>
-							<Link to={'/others'}>Others</Link>
+							<Link to={'/home'}>Others</Link>
 						</li>
 					</ul>
 					<ul className="mt-4 flex flex-col gap-3 text-wrap">
@@ -99,22 +99,22 @@ const NavBar = () => {
 					<Link to={'/'}>Shopi</Link>
 				</li>
 				<li>
-					<Link to={'/all'}>All</Link>
+					<Link to={'/home'}>All</Link>
 				</li>
 				<li>
-					<Link to={'/clothes'}>Clothes</Link>
+					<Link to={'/home'}>Clothes</Link>
 				</li>
 				<li>
-					<Link to={'/electronics'}>Electronics</Link>
+					<Link to={'/home'}>Electronics</Link>
 				</li>
 				<li>
-					<Link to={'/furnitures'}>Furnitures</Link>
+					<Link to={'/home'}>Furnitures</Link>
 				</li>
 				<li>
-					<Link to={'/toys'}>Toys</Link>
+					<Link to={'/home'}>Toys</Link>
 				</li>
 				<li>
-					<Link to={'/others'}>Others</Link>
+					<Link to={'/home'}>Others</Link>
 				</li>
 			</ul>
 			<ul className="hidden lg:flex items-center gap-3">

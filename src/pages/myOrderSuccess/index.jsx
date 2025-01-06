@@ -10,11 +10,11 @@ function MyOrderSuccess() {
 		const { products } = tempOrder[tempOrder.length - 1];
 		return (
 			<Layout>
-				<div className="max-w-screen-xl mx-auto p-4 m-4 bg-indigo-100 border border-indigo-200 rounded-lg shadow-lg">
-					<h1 className="text-2xl font-semibold text-center my-8">Recent Purchases</h1>
+				<div className="max-w-lg p-6">
+					<h1 className="text-2xl font-semibold text-center my-8">You have purchased</h1>
 
 					{/* < sm */}
-					<div className="flex flex-col sm:hidden">
+					<div className="flex flex-col sm:hidden bg-indigo-100 border border-indigo-200 rounded-lg shadow-lg">
 						{products.map((product, index) => (
 							<div key={index} className="w-full bg-white shadow-md rounded flex-shrink-0 overflow-hidden mb-4">
 								<img src={product.image} alt={product.title} className="w-full h-32 object-contain object-center p-2" />
@@ -29,7 +29,7 @@ function MyOrderSuccess() {
 					</div>
 
 					{/* > md */}
-					<div className="hidden md:flex overflow-x-auto space-x-4 p-4 bg-gray-100 rounded-lg">
+					<div className="hidden md:flex overflow-x-auto space-x-4 p-4 bg-indigo-100 border border-indigo-200 rounded-lg shadow-lg">
 						{products.map((product, index) => (
 							<div key={index} className="w-48 bg-white shadow-md rounded flex-shrink-0 overflow-hidden">
 								<img src={product.image} alt={product.title} className="w-full h-32 object-contain object-center p-2" />
