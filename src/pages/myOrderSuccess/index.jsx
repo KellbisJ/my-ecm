@@ -14,7 +14,7 @@ function MyOrderSuccess() {
 					<h1 className="text-2xl font-semibold text-center my-8">You have purchased</h1>
 
 					{/* < sm */}
-					<div className="flex flex-col sm:hidden bg-indigo-100 border border-indigo-200 rounded-lg shadow-lg">
+					<div className="flex flex-col sm:hidden p-4 bg-indigo-100 border border-indigo-200 rounded-lg shadow-lg">
 						{products.map((product, index) => (
 							<div key={index} className="w-full bg-white shadow-md rounded flex-shrink-0 overflow-hidden mb-4">
 								<img src={product.image} alt={product.title} className="w-full h-32 object-contain object-center p-2" />
