@@ -37,13 +37,6 @@ function SignIn() {
 		}
 	}, [loginProcess]);
 
-	useEffect(() => {
-		const loginState = localStorage.getItem('LOGIN_PROCESS_FAKE');
-		if (loginState === 'true') {
-			setLoginProcess(true);
-		}
-	}, [setLoginProcess]);
-
 	const handleSelectUser = (event) => {
 		const selectedUserId = event.target.value;
 		const selectedUser = users.find((user) => user.id === parseInt(selectedUserId));
@@ -54,7 +47,6 @@ function SignIn() {
 		try {
 			setIsButtonDisabled(true);
 			setLoginProcess(true);
-			localStorage.setItem('LOGIN_PROCESS_FAKE', 'true');
 			const response = await PostUserLogin(selectedUser);
 			if (response) {
 				const { token } = response;
@@ -65,7 +57,6 @@ function SignIn() {
 			console.error(error);
 			setIsButtonDisabled(false);
 			setLoginProcess(false);
-			localStorage.setItem('LOGIN_PROCESS_FAKE', 'false');
 		}
 	};
 
