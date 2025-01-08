@@ -41,11 +41,6 @@ function Checkout() {
 		return () => clearTimeout(timeoutId);
 	}, [cart]);
 
-	useEffect(() => {
-		console.log('TempOrder actual:', tempOrder);
-		console.log('Orders para guardar:', orders);
-	}, [tempOrder, orders]);
-
 	if (loading) {
 		return (
 			<Layout>

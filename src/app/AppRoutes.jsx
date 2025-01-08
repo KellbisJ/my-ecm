@@ -10,12 +10,14 @@ import { NotFound } from '../pages/notFound';
 import { SignIn } from '../pages/signIn';
 import { SignOut } from '../pages/signOut';
 import { AuthRedirect } from '../auth';
+import { ErrorPage } from '../components/errorPage';
 
 const AppRoutes = () => {
 	const routes = useRoutes([
 		{
 			path: '/',
 			element: <Home />,
+			errorElement: <ErrorPage errMsg="Failed to load home page. Please try again later." />,
 		},
 		{
 			path: '/home',

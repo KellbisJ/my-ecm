@@ -33,7 +33,7 @@ const useProductOrderInCart = () => {
 			removeAllOrdersFromCart();
 			setTempOrder((prevTempOrder) => [...prevTempOrder, newOrder]);
 			saveUserPurchasedOrder(newOrder);
-			console.log('Nueva orden:', newOrder);
+			// console.log('Nueva orden:', newOrder);
 		}
 	};
 	return { newOrderCheckout };

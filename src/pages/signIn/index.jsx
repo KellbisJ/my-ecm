@@ -17,24 +17,32 @@ function SignIn() {
 
 	const navigate = useNavigate();
 
-	const { signIn, user, token, userId } = useContext(AuthContext);
+	const { signIn, user, token, userId, loginProcess, setLoginProcess } = useContext(AuthContext);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getUsers();
-				if (data) {
-					setUsers(data);
+		if (!loginProcess) {
+			const fetchData = async () => {
+				try {
+					const data = await getUsers();
+					if (data) {
+						setUsers(data);
+						setLoading(false);
+					}
+				} catch (error) {
+					console.error('Error fetching users:', error);
 					setLoading(false);
 				}
-			} catch (error) {
-				console.error('Error fetching users:', error);
-				setLoading(false);
-			}
-		};
+			};
+			fetchData();
+		}
+	}, [loginProcess]);
 
-		fetchData();
-	}, []);
+	useEffect(() => {
+		const loginState = localStorage.getItem('LOGIN_PROCESS_FAKE');
+		if (loginState === 'true') {
+			setLoginProcess(true);
+		}
+	}, [setLoginProcess]);
 
 	const handleSelectUser = (event) => {
 		const selectedUserId = event.target.value;
@@ -45,6 +53,8 @@ function SignIn() {
 	const handleLogin = async () => {
 		try {
 			setIsButtonDisabled(true);
+			setLoginProcess(true);
+			localStorage.setItem('LOGIN_PROCESS_FAKE', 'true');
 			const response = await PostUserLogin(selectedUser);
 			if (response) {
 				const { token } = response;
@@ -54,14 +64,14 @@ function SignIn() {
 		} catch (error) {
 			console.error(error);
 			setIsButtonDisabled(false);
+			setLoginProcess(false);
+			localStorage.setItem('LOGIN_PROCESS_FAKE', 'false');
 		}
 	};
 
 	const toggleShowPassword = () => {
 		setShowPassword(!showPassword);
 	};
-
-	// console.log(selectedUser);
 
 	if (user && token && userId) {
 		return (
@@ -73,6 +83,17 @@ function SignIn() {
 							<button className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 text-center transition w-60 rounded">Back to home</button>
 						</Link>
 					</div>
+				</div>
+			</Layout>
+		);
+	}
+
+	if (loginProcess) {
+		return (
+			<Layout>
+				<div className="flex flex-col items-center justify-center min-h-[90vh]">
+					<p className="text-xl font-semibold text-gray-800 mb-4">Login in progress...</p>
+					<CircleLoader />
 				</div>
 			</Layout>
 		);

@@ -33,7 +33,7 @@ function MyOrder() {
 		);
 	}
 
-	console.log(order);
+	// console.log(order);
 
 	if (order) {
 		return (

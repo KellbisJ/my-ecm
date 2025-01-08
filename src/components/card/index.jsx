@@ -18,7 +18,7 @@ const Card = ({ product }) => {
 
 	const handleAddToCartClick = (e) => {
 		if (product) {
-			console.log('proood');
+			// console.log('proood');
 
 			e.stopPropagation();
 			setShowProductDetail(false);
